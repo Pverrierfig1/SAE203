@@ -24,7 +24,7 @@ function entete($titre){
     <div class='container-fuild'>
       <div class='row'>
         <div class='col-3 text-start'>
-          <img src='/images/logo.png' alt='Logo de notre société' class='img-fluid' width='150'>
+          <img src='images/logo.jpg' alt='Logo de notre société' class='img-fluid' width='100'>
         </div>
       </div>
     </div>
@@ -36,10 +36,16 @@ function navigation($page){
 }
 
 function pieddepage(){
-  date_default_timezone_set("Europe/Paris");
+  date_default_timezone_set('Europe/Paris');
+  $date = date("d M Y - H:i:s");
 echo ("
-    <footer class='mt-5 p-4 bg-light text-center'>
-
+    <footer class='bg-light text-center text-lg-start shadow mt-5'>
+          <img src='images/logo.jpg' alt='Logo de notre société' class='img-fluid' width='75'>
+     <div class='text-center'>
+        <span>&copy; " . $date . " — Hydrofix. Tous droits réservés</span>
+        <br>
+        <br>
+      </div>
     </footer>
 ");
 }
