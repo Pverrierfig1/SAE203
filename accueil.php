@@ -1,9 +1,14 @@
 <?php
 $page = "Accueil";
+$description = "Page d'accueil";
+$keywords = "default";
 
 include("./scripts/functions.php");
-parametres();
-entete();
-echo "</body>";
+parametres($page,$description,$keywords);
+
+entete($page);
+
+navigation($page);
+
 pieddepage();
 ?>
