@@ -38,11 +38,11 @@ function navigation($page){
       <a class='navbar-brand' href='#'>WebSiteName</a>
     </div>
     <ul class='nav navbar-nav'>
-      <li class='active'><a href='../accueil.php'>Accueil</a></li>
-      <li><a href='#'>Qui sommes nous ?</a></li>
-      <li><a href='#'>Histoire</a></li>
-      <li><a href='#'>Activités</a></li>
-      <li><a href='#'></a>Partenaires</li>
+      <li class='nav-item'><a class='nav-link".($a=='accueil'?" active'":"'")." href='../accueil.php'>Accueil</a></li>
+      <li class='nav-item'><a class='nav-link".($a=='Qui'?" active'":"'")." href='#'>Qui sommes nous ?</a></li>
+      <li class='nav-item'><a class='nav-link".($a=='Histoire'?" active'":"'")." href='#'>Histoire</a></li>
+      <li class='nav-item'><a class='nav-link".($a=='Activités'?" active'":"'")." href='#'>Activités</a></li>
+      <li class='nav-item'><a class='nav-link".($a=='Partenaires'?" active'":"'")." href='#'></a>Partenaires</li>
     </ul>
   </div>
 </nav>")
@@ -52,7 +52,11 @@ function pieddepage(){
   date_default_timezone_set("Europe/Paris");
 echo ("
     <footer class='mt-5 p-4 bg-light text-center'>
-
+      <div class='mt-4 p-1 bg-primary text-white rounded'>
+                <p class='text-center'>Pol VERRIER FI1A G1 pol.verrier@etudiant.univ-rennes.fr</p>
+                <p class='text-center'>".date("m/d/y")." &copy; ".date('Y')"</p> 
+                
+            </div>
     </footer>
 ");
 }
