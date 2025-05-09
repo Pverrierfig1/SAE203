@@ -54,7 +54,7 @@ echo ("
     <footer class='mt-5 p-4 bg-light text-center'>
       <div class='mt-4 p-1 bg-primary text-white rounded'>
                 <p class='text-center'>Pol VERRIER FI1A G1 pol.verrier@etudiant.univ-rennes.fr</p>
-                <p class='text-center'>".date("m/d/y")." &copy; ".date('Y')"</p> 
+                <p class='text-center'>".date("m/d/y")." &copy; ".date('Y')."</p> 
                 
             </div>
     </footer>
