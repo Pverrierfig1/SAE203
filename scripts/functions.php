@@ -45,7 +45,7 @@ function navigation($page){
       <li class='nav-item'><a class='nav-link".($a=='Partenaires'?" active'":"'")." href='#'></a>Partenaires</li>
     </ul>
   </div>
-</nav>")
+</nav>");
 }
 
 function pieddepage(){
