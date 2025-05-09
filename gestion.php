@@ -4,7 +4,7 @@ $description = "Page de gestion";
 $keywords = "default";
 
 include("./scripts/functions.php");
-$data = json_decode(file_get_contents("../data/utilisateurs.json",true));
+$data = json_decode(file_get_contents("./data/utilisateurs.json"),true);
 
 parametres($page,$description,$keywords);
 
@@ -16,9 +16,9 @@ if (isset($_POST["name"])){
 
   echo("<pre>".print_r($_POST,true)."</pre>");
   $username = strtolower($_POST["prenom"])[0].strtolower($_POST["name"]);
-  $data[$username] = array("nom" = $_POST["name"],"prenom"=>$_POST["prenom"],"telephone"=>$_POST["tel"],"roles"=>array(),"password"=>password_hash($_POST["password"], PASSWORD_DEFAULT));
+  $data[$username] = array("nom" => $_POST["name"],"prenom"=>$_POST["prenom"],"telephone"=>$_POST["tel"],"roles"=>array(),"password"=>password_hash($_POST["password"], PASSWORD_DEFAULT));
   print_r($data);
-  file_put_contents("../data/utilisateurs.json", $data);
+  file_put_contents("./data/utilisateurs.json", json_encode($data));
 
 }
 else{
