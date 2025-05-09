@@ -1,2 +1,1 @@
-Test de mise a jour fichier Readme 
-Ca marche
+Bonjour, ceci est le projet de Pol, Esteban, Hugo, Kylian, Mathéo, Quentin
