@@ -32,7 +32,20 @@ function entete($titre){
 }
 
 function navigation($page){
-
+  echo("<nav class='navbar navbar-default'>
+  <div class='container-fluid'>
+    <div class='navbar-header'>
+      <a class='navbar-brand' href='#'>WebSiteName</a>
+    </div>
+    <ul class='nav navbar-nav'>
+      <li class='active'><a href='../accueil.php'>Accueil</a></li>
+      <li><a href='#'>Qui sommes nous ?</a></li>
+      <li><a href='#'>Histoire</a></li>
+      <li><a href='#'>Activités</a></li>
+      <li><a href='#'></a>Partenaires</li>
+    </ul>
+  </div>
+</nav>")
 }
 
 function pieddepage(){
