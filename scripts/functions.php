@@ -30,7 +30,7 @@ function entete($titre){
           <h1>Hydrofix</h1>
         </div>
         <div class='col-4 text-end'>
-          <a class='btn btn-secondary'>Connexion</button>
+          <a class='btn btn-secondary'>Connexion</a>
         </div>
       </div>
     </div>
