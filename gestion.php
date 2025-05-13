@@ -17,23 +17,22 @@ if (isset($_POST["name"])){
   //echo("<pre>".print_r($_POST,true)."</pre>");
   $username = strtolower($_POST["prenom"]).".".strtolower($_POST["name"]); //clé = prenom.nom
   if (!isset($data[$username])){
-    if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-      echo('
-        <div class="alert alert-success mt-5 container">
-          <strong>Bienvenue !</strong>
-        </div>');
         $data[$username] = array("nom" => $_POST["name"],"prenom"=>$_POST["prenom"],"telephone"=>$_POST["tel"],"roles"=>$_POST["roles"],"password"=>password_hash($_POST["password"], PASSWORD_DEFAULT));
         //print_r($data);
-        file_put_contents("./data/utilisateurs.json", json_encode($data));
-    }
-    else{
-      echo('
-        <div class="alert alert-danger mt-5 container">
-          <strong>Erreur !</strong> Email invalide.
+        $result = file_put_contents("./data/utilisateurs.json", json_encode($data));
+        if ($result === false){ //retourne un nombre d'octets ou false 
+          alert("<strong>Erreur !</strong> L'utilisateur n'a pas été enregistré...");
+        }
+        else{
+        echo('
+        <div class="alert alert-success mt-5 container">
+          <strong>Utilisateur créé !</strong>
         </div>');
+        }
+      }
+  else{
+      alert("<strong>Erreur !</strong> Email invalide.");
     }
-  }
-
 }
 else{
 //les roles sont sous forme de tableau pour ne pas avoir a les transformer a la l envoie du form
