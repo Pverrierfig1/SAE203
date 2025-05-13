@@ -84,9 +84,12 @@ echo ("
 }
 
 function alert($texte){
-  echo('<div class="alert alert-danger alert-dismissible fade show">
+  echo('
+  <div class="container">
+  <div class="alert alert-danger alert-dismissible fade show">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     '.$texte.'
+  </div>
   </div>');
 }
 ?>
