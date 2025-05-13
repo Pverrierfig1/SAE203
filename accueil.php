@@ -1,5 +1,5 @@
 <?php
-$page = "Accueil";
+$page = "acceuil.php";
 $description = "Page d'accueil";
 $keywords = "default";
 

@@ -32,7 +32,34 @@ function entete($titre){
 }
 
 function navigation($page){
-
+  echo( "
+  <nav class='navbar navbar-expand-lg navbar-light bg-light'>
+  <div class='container'>
+    <a class='navbar-brand' href='../accueil.php'>Hydrofix</a>
+    <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
+      <span class='navbar-toggler-icon'></span>
+    </button>
+    <div class='collapse navbar-collapse' id='navbarNav'>
+      <ul class='navbar-nav'>
+        <li class='nav-item'>
+          <a class='nav-link " . ($page == 'accueil' ? 'active' : '') . "' href='../accueil.php'>Accueil</a>
+        </li>
+        <li class='nav-item'>
+          <a class='nav-link " . ($page == 'Qui' ? 'active' : '') . "' href='#'>Qui sommes-nous ?</a>
+        </li>
+        <li class='nav-item'>
+          <a class='nav-link " . ($page == 'Histoire' ? 'active' : '') . "' href='#'>Histoire</a>
+        </li>
+        <li class='nav-item'>
+          <a class='nav-link " . ($page == 'Activités' ? 'active' : '') . "' href='#'>Activités</a>
+        </li>
+        <li class='nav-item'>
+          <a class='nav-link " . ($page == 'Partenaires' ? 'active' : '') . "' href='#'>Partenaires</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>");
 }
 
 function pieddepage(){

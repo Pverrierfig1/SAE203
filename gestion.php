@@ -1,4 +1,7 @@
 <?php
+parametres(Page gestion, page permettant la gestion des utilisateurs, pas encore de mots clés);
+entete(Page gestion);
+navigation(gestion.php);
 $page = "Gestion des utilisateurs";
 $description = "Page de gestion";
 $keywords = "default";
