@@ -20,11 +20,17 @@ function parametres($titre,$description,$keywords){
 }
 
 function entete($titre){
-  echo("<header class='p-4 bg-primary text-white'>
+  echo("<header class='p-3 bg-primary text-white'>
     <div class='container-fuild'>
       <div class='row'>
-        <div class='col-3 text-start'>
-          <img src='images/logo.jpg' alt='Logo de notre société' class='img-fluid' width='100'>
+        <div class='col-4 text-start'>
+          <img src='images/logo.png' alt='Logo de notre société' class='img-fluid' width='100'>
+        </div>
+        <div class='col-4 text-center'>
+          <h1>Hydrofix</h1>
+        </div>
+        <div class='col-4 text-end'>
+          <a class='btn btn-secondary'>Connexion</button>
         </div>
       </div>
     </div>
@@ -67,7 +73,7 @@ function pieddepage(){
   $date = date("d M Y - H:i:s");
 echo ("
     <footer class='bg-light text-center text-lg-start shadow mt-5'>
-          <img src='images/logo.jpg' alt='Logo de notre société' class='img-fluid' width='75'>
+          <img src='images/logo.png' alt='Logo de notre société' class='img-fluid' width='75'>
      <div class='text-center'>
         <span>&copy; " . $date . " — Hydrofix. Tous droits réservés</span>
         <br>
@@ -75,5 +81,12 @@ echo ("
       </div>
     </footer>
 ");
+}
+
+function alert($texte){
+  echo('<div class="alert alert-danger alert-dismissible fade show">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    '.$texte.'
+  </div>')
 }
 ?>
