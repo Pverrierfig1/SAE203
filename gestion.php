@@ -17,15 +17,21 @@ if (isset($_POST["name"])){
   //echo("<pre>".print_r($_POST,true)."</pre>");
   $username = strtolower($_POST["prenom"]).".".strtolower($_POST["name"]); //clé = prenom.nom
   if (!isset($data[$username])){
-      $data[$username] = array("nom" => $_POST["name"],"prenom"=>$_POST["prenom"],"telephone"=>$_POST["tel"],"roles"=>$_POST["roles"],"password"=>password_hash($_POST["password"], PASSWORD_DEFAULT));
-      //print_r($data);
-      file_put_contents("./data/utilisateurs.json", json_encode($data));
-  }
-  else{
-    echo('
-      <div class="alert alert-danger mt-5 container">
-        <strong>Erreur !</strong> L\'utilisateur existe déja.
-      </div>');
+    if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+      echo('
+        <div class="alert alert-success mt-5 container">
+          <strong>Bienvenue !</strong>
+        </div>');
+        $data[$username] = array("nom" => $_POST["name"],"prenom"=>$_POST["prenom"],"telephone"=>$_POST["tel"],"roles"=>$_POST["roles"],"password"=>password_hash($_POST["password"], PASSWORD_DEFAULT));
+        //print_r($data);
+        file_put_contents("./data/utilisateurs.json", json_encode($data));
+    }
+    else{
+      echo('
+        <div class="alert alert-danger mt-5 container">
+          <strong>Erreur !</strong> Email invalide.
+        </div>');
+    }
   }
 
 }
@@ -49,7 +55,7 @@ else{
   </div>
   <div class="mb-3">
     <label for="email" class="form-label">Entrez l\'e-mail de l\'utilisateur</label>
-    <input type="email" class="form-control" id="password" placeholder="Entez un e-mail" name="email" required>
+    <input type="email" class="form-control" id="email" placeholder="Entez un e-mail" name="email" required>
   </div>
   <div class="form-check">
       <h2>Séléctionnez les rôle de l\'utilisateur</h2>
