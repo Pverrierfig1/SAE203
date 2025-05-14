@@ -17,7 +17,7 @@ if (isset($_POST["name"])){
   //echo("<pre>".print_r($_POST,true)."</pre>");
   $username = strtolower($_POST["prenom"]).".".strtolower($_POST["name"]); //clé = prenom.nom
   if (!isset($data[$username])){
-        $data[$username] = array("nom" => $_POST["name"],"prenom"=>$_POST["prenom"],"telephone"=>$_POST["tel"],"roles"=>$_POST["roles"],"password"=>password_hash($_POST["password"], PASSWORD_DEFAULT));
+        $data[$username] = array("nom" => $_POST["name"],"prenom"=>$_POST["prenom"],"telephone"=>$_POST["tel"],"roles"=>$_POST["roles"],"password"=>password_hash($_POST["password"], PASSWORD_DEFAULT),"bio"=>"");
         //print_r($data);
         $result = file_put_contents("./data/utilisateurs.json", json_encode($data));
         if ($result === false){ //retourne un nombre d'octets ou false 
