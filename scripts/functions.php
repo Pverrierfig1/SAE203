@@ -23,14 +23,14 @@ function entete($titre){
   echo("<header class='p-3 bg-primary text-white'>
     <div class='container-fuild'>
       <div class='row'>
-        <div class='col-4 text-start'>
-          <img src='images/logo.png' alt='Logo de notre société' class='img-fluid' width='100'>
+        <div class='col-4 text-start img-fluid'>
+          <img src='images/logo.png' alt='Logo de notre société' width='100'>
         </div>
-        <div class='col-4 text-center'>
+        <div class='mt-4 col-4 text-center'>
           <h1>Hydrofix</h1>
         </div>
-        <div class='col-4 text-end'>
-          <a class='btn btn-secondary'>Connexion</button>
+        <div class='mt-4 col-4 text-end'>
+          <a href='./connexion.php' class='btn btn-secondary'>Connexion</a>
         </div>
       </div>
     </div>
@@ -45,22 +45,29 @@ function navigation($page){
     <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
       <span class='navbar-toggler-icon'></span>
     </button>
-    <div class='collapse navbar-collapse' id='navbarNav'>
+    <div class='collapse navbar-collapse justify-content-center' id='navbarNav'>
       <ul class='navbar-nav'>
         <li class='nav-item'>
-          <a class='nav-link " . ($page == 'accueil' ? 'active' : '') . "' href='../accueil.php'>Accueil</a>
+          <a class='nav-link " . ($page == 'accueil' ? 'active' : '') . "' href='./accueil.php'>Accueil</a>
+        </li>
+        <li class='nav-item dropdown'>
+          <a class='nav-link " . ($page == 'Qui' ? 'active' : '') . " dropdown-toggle' href='#' role='button' data-bs-toggle='dropdown'>Gestionnaire de fichiers</a>
+          <ul class='dropdown-menu'>
+            <li><a class='dropdown-item' href='./partage.php'>Visualisation</a></li>
+            <li><a class='dropdown-item' href='./depot.php'>Modification</a></li>
+          </ul>
         </li>
         <li class='nav-item'>
-          <a class='nav-link " . ($page == 'Qui' ? 'active' : '') . "' href='#'>Qui sommes-nous ?</a>
+          <a class='nav-link " . ($page == 'Histoire' ? 'active' : '') . "' href='./annuaire_entreprise.php'>Annuaire entreprise</a>
         </li>
         <li class='nav-item'>
-          <a class='nav-link " . ($page == 'Histoire' ? 'active' : '') . "' href='#'>Histoire</a>
+          <a class='nav-link " . ($page == 'Activités' ? 'active' : '') . "' href='./annuaire_fournisseurs.php'>Annuaires des fournisseurs partenaires</a>
         </li>
         <li class='nav-item'>
-          <a class='nav-link " . ($page == 'Activités' ? 'active' : '') . "' href='#'>Activités</a>
+          <a class='nav-link " . ($page == 'Partenaires' ? 'active' : '') . "' href='./annuaire_client.php'>Annuaire des clients</a>
         </li>
         <li class='nav-item'>
-          <a class='nav-link " . ($page == 'Partenaires' ? 'active' : '') . "' href='#'>Partenaires</a>
+          <a class='nav-link " . ($page == 'wiki' ? 'active' : '') . "' href='./wiki.php'>Wiki</a>
         </li>
       </ul>
     </div>
@@ -70,12 +77,12 @@ function navigation($page){
 
 function pieddepage(){
   date_default_timezone_set('Europe/Paris');
-  $date = date("d M Y - H:i:s");
+  $date = date("d/m/y - H:i:s");
 echo ("
-    <footer class='bg-light text-center text-lg-start shadow mt-5'>
+    <footer class='bg-light text-center shadow mt-5'>
           <img src='images/logo.png' alt='Logo de notre société' class='img-fluid' width='75'>
      <div class='text-center'>
-        <span>&copy; " . $date . " — Hydrofix. Tous droits réservés</span>
+        <span>" . $date . " — &copy;Hydrofix. Tous droits réservés</span>
         <br>
         <br>
       </div>
@@ -85,11 +92,9 @@ echo ("
 
 function alert($texte){
   echo('
-  <div class="container">
-  <div class="alert alert-danger alert-dismissible fade show">
+  <div class="container alert alert-danger alert-dismissible fade show">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     '.$texte.'
-  </div>
   </div>');
 }
 ?>
