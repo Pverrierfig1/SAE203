@@ -92,7 +92,7 @@ echo ("
 
 function alert($texte){
   echo('
-  <div class="container alert alert-danger alert-dismissible fade show">
+  <div class="container alert alert-danger alert-dismissible fade show mt-4">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     '.$texte.'
   </div>');
