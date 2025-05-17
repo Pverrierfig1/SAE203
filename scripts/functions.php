@@ -23,14 +23,23 @@ function entete($titre){
   echo("<header class='p-3 bg-primary text-white'>
     <div class='container-fuild'>
       <div class='row'>
-        <div class='col-4 text-start img-fluid'>
+        <div class='col text-start img-fluid'>
           <img src='images/logo.png' alt='Logo de notre société' width='100'>
         </div>
-        <div class='mt-4 col-4 text-center'>
+        <div class='mt-4 col-6 text-center'>
           <h1>Hydrofix</h1>
         </div>
-        <div class='mt-4 col-4 text-end'>
-          <p>"); if (isset($_SESSION['username'])){echo("Vous êtes connecté en tant que : ".$_SESSION['nom']." ".$_SESSION['prenom']." "); echo("<a href='./deconnexion.php' class='btn btn-secondary'>Deconnexion</a>");} else{echo("<a href='./connexion.php' class='btn btn-secondary'>Connexion</a>");}; echo("
+        <div class='mt-4 col text-center'>
+        "); 
+        if (isset($_SESSION['username'])){
+          echo("<a href='./deconnexion.php' class='btn btn-danger'>Deconnexion</a><br>");
+          echo("<p class='mt-3'>Vous êtes connecté en tant que : <br>".$_SESSION['nom']." ".$_SESSION['prenom']." </p>
+          <a href='mailto:".$_SESSION['email']."' class='text-white'>".$_SESSION['email']."</a>");
+        } 
+        else{
+          echo("<a href='./connexion.php' class='btn btn-info'>Connexion</a>");
+          } 
+        echo("
         </div>
       </div>
     </div>
@@ -68,10 +77,12 @@ function navigation($page){
         </li>
         ");
         if (isset($_SESSION['roles'])){
-        $key = array_search("administrateur", $_SESSION['roles']);
-        if ($key != false) {echo("<li class='nav-item'>
-          <a class='nav-link " . ($page == 'wiki' ? 'active' : '') . "' href='./wiki.php'>Wiki</a>
-        </li>");}};
+          $key = array_search("administrateur", $_SESSION['roles']);
+          if ($key !== false) {echo("<li class='nav-item'>
+            <a class='nav-link " . ($page == 'wiki' ? 'active' : '') . "' href='./wiki.php'>Wiki</a>
+          </li>");
+          }
+        };
         echo("
       </ul>
     </div>
