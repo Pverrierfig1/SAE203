@@ -30,7 +30,7 @@ function entete($titre){
           <h1>Hydrofix</h1>
         </div>
         <div class='mt-4 col-4 text-end'>
-          <a href='./connexion.php' class='btn btn-secondary'>Connexion</a>
+          <p>"); if (isset($_SESSION['username'])){echo("Vous êtes connecté en tant que : ".$_SESSION['nom']." ".$_SESSION['prenom']." "); echo("<a href='./deconnexion.php' class='btn btn-secondary'>Deconnexion</a>");} else{echo("<a href='./connexion.php' class='btn btn-secondary'>Connexion</a>");}; echo("
         </div>
       </div>
     </div>
