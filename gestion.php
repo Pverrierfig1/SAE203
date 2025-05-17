@@ -17,7 +17,7 @@ if (isset($_POST["name"])){
   //echo("<pre>".print_r($_POST,true)."</pre>");
   $username = strtolower($_POST["prenom"]).".".strtolower($_POST["name"]); //clé = prenom.nom
   if (!isset($data[$username])){
-        $data[$username] = array("nom" => $_POST["name"],"prenom"=>$_POST["prenom"],"telephone"=>$_POST["tel"],"roles"=>$_POST["roles"],"password"=>password_hash($_POST["password"], PASSWORD_DEFAULT),"bio"=>"");
+        $data[$username] = array("nom" => $_POST["name"],"prenom"=>$_POST["prenom"],"telephone"=>$_POST["tel"],"roles"=>$_POST["roles"],"email"=>$_POST["email"],"password"=>password_hash($_POST["password"], PASSWORD_DEFAULT),"bio"=>"");
         //print_r($data);
         $result = file_put_contents("./data/utilisateurs.json", json_encode($data));
         if ($result === false){ //retourne un nombre d'octets ou false 
@@ -35,7 +35,7 @@ if (isset($_POST["name"])){
     }
 }
 else{
-//les roles sont sous forme de tableau pour ne pas avoir a les transformer a la l envoie du form
+//les roles sont sous forme de tableau pour ne pas avoir a les transformer a la l'envoi du form
   echo('
 <div class="container">
 <h1>Création d\'un utilisateur</h1>

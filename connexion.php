@@ -16,7 +16,7 @@ if (isset($_POST["username"])){
   $username = $_POST["username"];
   if (isset($data[$username]) && password_verify($_POST["pswd"], $data[$username]["password"])){
     $userData = $data[$username];
-    $_SESSION = array("username"=>$username,"nom" => $userData["nom"],"prenom"=>$userData["prenom"],"telephone"=>$userData["tel"],"roles"=>$userData["roles"],"time"=>time());
+    $_SESSION = array("username"=>$username,"nom" => $userData["nom"],"email"=>$userData["email"],"prenom"=>$userData["prenom"],"telephone"=>$userData["tel"],"roles"=>$userData["roles"],"time"=>time());
     header("Location: ./accueil.php");
     exit; //arrête l'execution du code
   }
