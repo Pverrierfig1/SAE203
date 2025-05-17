@@ -66,9 +66,13 @@ function navigation($page){
         <li class='nav-item'>
           <a class='nav-link " . ($page == 'Partenaires' ? 'active' : '') . "' href='./annuaire_client.php'>Annuaire des clients</a>
         </li>
-        <li class='nav-item'>
+        ");
+        if (isset($_SESSION['roles'])){
+        $key = array_search("administrateur", $_SESSION['roles']);
+        if ($key != false) {echo("<li class='nav-item'>
           <a class='nav-link " . ($page == 'wiki' ? 'active' : '') . "' href='./wiki.php'>Wiki</a>
-        </li>
+        </li>");}};
+        echo("
       </ul>
     </div>
   </div>
