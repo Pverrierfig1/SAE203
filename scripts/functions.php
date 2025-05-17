@@ -30,7 +30,7 @@ function entete($titre){
           <h1>Hydrofix</h1>
         </div>
         <div class='mt-4 col-4 text-end'>
-          <a href='./connexion.php' class='btn btn-secondary'>Connexion</a>
+          <p>"); if (isset($_SESSION['username'])){echo("Vous êtes connecté en tant que : ".$_SESSION['nom']." ".$_SESSION['prenom']." "); echo("<a href='./deconnexion.php' class='btn btn-secondary'>Deconnexion</a>");} else{echo("<a href='./connexion.php' class='btn btn-secondary'>Connexion</a>");}; echo("
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@ function navigation($page){
   echo( "
   <nav class='navbar navbar-expand-lg navbar-light bg-light'>
   <div class='container'>
-    <a class='navbar-brand' href='../accueil.php'>Hydrofix</a>
+    <a class='navbar-brand' href='../accueil_wordpress.html'>Hydrofix</a>
     <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
       <span class='navbar-toggler-icon'></span>
     </button>
@@ -66,9 +66,13 @@ function navigation($page){
         <li class='nav-item'>
           <a class='nav-link " . ($page == 'Partenaires' ? 'active' : '') . "' href='./annuaire_client.php'>Annuaire des clients</a>
         </li>
-        <li class='nav-item'>
+        ");
+        if (isset($_SESSION['roles'])){
+        $key = array_search("administrateur", $_SESSION['roles']);
+        if ($key != false) {echo("<li class='nav-item'>
           <a class='nav-link " . ($page == 'wiki' ? 'active' : '') . "' href='./wiki.php'>Wiki</a>
-        </li>
+        </li>");}};
+        echo("
       </ul>
     </div>
   </div>
