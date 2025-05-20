@@ -136,4 +136,23 @@ function admin(){
   return false;
 }
 
+function stockage($rep){
+  $taille = 0;
+  $repertoire = $rep;
+  $rep_recurs = scandir($repertoire);
+  foreach($rep_recurs as $cont){
+    if ($cont === "." || $cont === ".."){
+      continue;
+    }
+    $chemin = $repertoire."/".$cont;
+    if (is_file($chemin)){
+      $taille += filesize($chemin);
+    }
+    elseif (is_dir($chemin)) {
+      $taille += stockage($chemin);
+    }
+  }
+  return $taille;
+}
+
 ?>
