@@ -19,10 +19,9 @@ $est_admin = false;
 if (in_array('administrateur', $roles_connecte)) {
     $est_admin = true;
 }
-
-echo "<h1 class='text-center'> Annuaire de l'entreprise </h1> ";
+echo "<div class='container-fluid ml-5 mr-5' >";
+echo "<h1> 📖 Annuaire de l'entreprise </h1> ";
 echo "<br>";
-echo "<div class='container-fluid'>";
 echo "<form method='POST' action='gestion.php'>";
 echo "<table class='table table-striped table-info'>";
 echo "<tr><th>Photo</th><th>Nom</th><th>Prenom</th><th>Fonction</th><th>Bio</th><th>Actions</th></tr>";
