@@ -1,54 +1,53 @@
 Nom;Téléphone;Email;Adresse
-Jean Bon;0601122334;jean.bon@email.com;1 rue du Jambon, Charcuterie-sur-Mer
-Ali Gator;0612233445;ali.gator@email.com;42 marais Crocodile, Bayou-les-Eaux
-Emma Thé;0623344556;emma.the@email.com;5 avenue des Infusions, Théièreville
-Justin Case;0634455667;justin.case@email.com;99 rue de la Prévention, Securiville
-Anne O'Nyme;0645566778;anne.onyme@email.com;7 rue Cachée, Mystère-sur-Seine
-Sal Lami;0656677889;sal.lami@email.com;12 rue du Dégustation, Fromage-en-Brie
-Léo Part;0667788990;leo.part@email.com;31 rue des Vacances, Départville
-Sue Doku;0678899001;sue.doku@email.com;18 rue des Grilles, Puzzle-sur-Loire
-Al Batar;0689900112;al.batar@email.com;11 rue des Pirates, Caraïb’île
-Will Émé;0691011223;will.eme@email.com;23 avenue des Désirs, Souhaitville
-Ben Diction;0702122334;ben.diction@email.com;6 rue du Lexique, Dico-City
-Luc Ide;0713233445;luc.ide@email.com;77 boulevard de la Pensée, Philosophie-les-Bois
-Maya Labeille;0724344556;maya.labeille@email.com;4 rue du Miel, Rucheville
-Noa Lité;0735455667;noa.lite@email.com;66 rue des Lampes, Électro-sur-Saône
-Rita Lité;0746566778;rita.lite@email.com;19 allée des Romans, Biblioville
-Guy Tan;0757677889;guy.tan@email.com;33 avenue des Vents, Sudville
-Pat Té;0768788990;pat.te@email.com;10 rue du Mouvement, Gymnase-sur-Yvette
-Sam Suffit;0779899001;sam.suffit@email.com;2 place de l’Évidence, Fatiguéville
-Claire Obscur;0780900112;claire.obscur@email.com;88 rue Contrastée, Ombreville
-Jim Pécâble;0791011223;jim.pecable@email.com;15 avenue du Style, Élégance-les-Bains
-Tom Ato;0602122334;tom.ato@email.com;8 rue des Potagers, Salade-sur-Oise
-Ella Boration;0613233445;ella.boration@email.com;29 rue des Répétitions, Théâtre-sur-Seine
-Ali Mentation;0624344556;
-Pain;0601010101;pain.grille@email.com;1 rue du Four, Boulangerie-sur-Seine
-Fromage;0612020202;cam.embere@email.com;12 rue des Croûtes, Roquefort-les-Alpages
-Tic;0623030303;tic.tac@email.com;3 rue des Montres, Horlogeville
-Tache;0634040404;tache.encre@email.com;7 rue du Stylo, Papeterie-les-Bains
-Bourg;0645050505;vin.rouge@email.com;24 avenue des Vignes, Châteauneuf-du-Pape
-Sanson;0656060606;juste.une@email.com;5 place du Supplice, Guillotine-sur-Loire
-Lampion;0667070707;fete.lumiere@email.com;99 rue des Lanternes, Fêteville
-Trou;0678080808;noir.abime@email.com;0 impasse du Néant, Vide-sur-Mer
-Selle;0689090909;cheval.galop@email.com;8 rue du Haras, Écurie-les-Bois
-Mitaine;0690101010;main.gauche@email.com;2 rue des Doigts, Ganterie-sur-Laines
-Lune;0701111111;pied.nuit@email.com;45 boulevard Cratère, Sélénopolis
-Pion;0712121212;jeu.echec@email.com;1 rue du Gambit, Stratégo-City
-Clé;0723131313;serrure.ouverte@email.com;13 rue du Coffre, Cadenasville
-Bouchon;0734141414;vin.bloque@email.com;17 rue des Embouteillages, Bouchon-sur-Routes
-Filet;0745151515;thon.peche@email.com;3 rue du Quai, Poissonville
-Ras;0756161616;barbe.coupe@email.com;6 avenue des Lames, Tondeuse-les-Champs
-Rateau;0767171717;jardin.plante@email.com;23 rue des Feuilles, Terre-sur-Jardin
-Barre;0778181818;barre.toi@email.com;42 rue de la Gym, Musculopolis
-Toile;0789191919;araignee.web@email.com;9 rue du Navigateur, Internetville
-Planche;0790202020;surf.vague@email.com;15 boulevard du Spot, Océan-sur-Mer
-Papier;0603030303;pli.feuille@email.com;33 rue de l’Imprimante, Bureaucratie-les-Bureaux
-Crayon;0614040404;mine.pointe@email.com;5 place du Dessin, Croquis-City
-Gomme;0625050505;efface.trace@email.com;7 avenue de la Correction, Brouillonville
-Cerne;0636060606;matin.fatigue@email.com;11 rue du Réveil, Café-sur-Cernes
-Talon;0647070707;marche.chaussure@email.com;10 rue de la Pointe, Escarpin-les-Rues
-Sapin;0658080808;noel.vert@email.com;122 allée des Aiguilles, Forêt-sur-Neige
-Glace;0669090909;froid.fondu@email.com;88 boulevard des Cornets, Sorbetville
-Avoine;0670101010;cheval.grain@email.com;18 ferme du Foin, Granulopolis
-Clou;0681111111;marteau.fixe@email.com;4 rue du Bricolage, Castoville
-Coin;0692121212;canard.place@email.com;6 rue du Coin-Coin, Étang-les-Ronds
+"Jean Bonneau";0601122334;jean.bon@email.com;"1 rue du Jambon, Charcuterie-sur-Mer"
+"Ali Gator";0612233445;ali.gator@email.com;"42 marais Crocodile, Bayou-les-Eaux"
+"Emma Thé";0623344556;emma.the@email.com;"5 avenue des Infusions"
+"Justin Case";0634455667;justin.case@email.com;"99 rue de la Prévention, Securiville"
+"Anne O'Nyme";0645566778;anne.onyme@email.com;"7 rue Cachée, Mystère-sur-Seine"
+"Sal Lami";0656677889;sal.lami@email.com;"12 rue du Dégustation, Fromage-en-Brie"
+"Léo Part";0667788990;leo.part@email.com;"31 rue des Vacances, Départville"
+"Sue Doku";0678899001;sue.doku@email.com;"18 rue des Grilles, Puzzle-sur-Loire"
+"Al Batar";0689900112;al.batar@email.com;"11 rue des Pirates, Caraïb’île"
+"Will Émé";0691011223;will.eme@email.com;"23 avenue des Désirs, Souhaitville"
+"Ben Diction";0702122334;ben.diction@email.com;"6 rue du Lexique, Dico-City"
+"Luc Ide";0713233445;luc.ide@email.com;"77 boulevard de la Pensée, Philosophie-les-Bois"
+"Maya Labeille";0724344556;maya.labeille@email.com;"4 rue du Miel, Rucheville"
+"Noa Lité";0735455667;noa.lite@email.com;"66 rue des Lampes, Électro-sur-Saône"
+"Rita Lité";0746566778;rita.lite@email.com;"19 allée des Romans, Biblioville"
+"Guy Tan";0757677889;guy.tan@email.com;"33 avenue des Vents, Sudville"
+"Pat Té";0768788990;pat.te@email.com;"10 rue du Mouvement, Gymnase-sur-Yvette"
+"Sam Suffit";0779899001;sam.suffit@email.com;"2 place de l’Évidence, Fatiguéville"
+"Claire Obscur";0780900112;claire.obscur@email.com;"88 rue Contrastée, Ombreville"
+"Jim Pécâble";0791011223;jim.pecable@email.com;"15 avenue du Style, Élégance-les-Bains"
+"Tom Ato";0602122334;tom.ato@email.com;"8 rue des Potagers, Salade-sur-Oise"
+"Ella Boration";0613233445;ella.boration@email.com;"29 rue des Répétitions, Théâtre-sur-Seine"
+Pain;0601010101;pain.grille@email.com;"1 rue du Four, Boulangerie-sur-Seine"
+Fromage;0612020202;cam.embere@email.com;"12 rue des Croûtes, Roquefort-les-Alpages"
+Tic;0623030303;tic.tac@email.com;"3 rue des Montres, Horlogeville"
+Tache;0634040404;tache.encre@email.com;"7 rue du Stylo, Papeterie-les-Bains"
+Bourg;0645050505;vin.rouge@email.com;"24 avenue des Vignes, Châteauneuf-du-Pape"
+Sanson;0656060606;juste.une@email.com;"5 place du Supplice, Guillotine-sur-Loire"
+Lampion;0667070707;fete.lumiere@email.com;"99 rue des Lanternes, Fêteville"
+Trou;0678080808;noir.abime@email.com;"0 impasse du Néant, Vide-sur-Mer"
+Selle;0689090909;cheval.galop@email.com;"8 rue du Haras, Écurie-les-Bois"
+Mitaine;0690101010;main.gauche@email.com;"2 rue des Doigts, Ganterie-sur-Laines"
+Lune;0701111111;pied.nuit@email.com;"45 boulevard Cratère, Sélénopolis"
+Pion;0712121212;jeu.echec@email.com;"1 rue du Gambit, Stratégo-City"
+Clé;0723131313;serrure.ouverte@email.com;"13 rue du Coffre, Cadenasville"
+Bouchon;0734141414;vin.bloque@email.com;"17 rue des Embouteillages, Bouchon-sur-Routes"
+Filet;0745151515;thon.peche@email.com;"3 rue du Quai, Poissonville"
+Ras;0756161616;barbe.coupe@email.com;"6 avenue des Lames, Tondeuse-les-Champs"
+Rateau;0767171717;jardin.plante@email.com;"23 rue des Feuilles, Terre-sur-Jardin"
+Barre;0778181818;barre.toi@email.com;"42 rue de la Gym, Musculopolis"
+Toile;0789191919;araignee.web@email.com;"9 rue du Navigateur, Internetville"
+Planche;0790202020;surf.vague@email.com;"15 boulevard du Spot, Océan-sur-Mer"
+Papier;0603030303;pli.feuille@email.com;"33 rue de l’Imprimante, Bureaucratie-les-Bureaux"
+Crayon;0614040404;mine.pointe@email.com;"5 place du Dessin, Croquis-City"
+Gomme;0625050505;efface.trace@email.com;"7 avenue de la Correction, Brouillonville"
+Cerne;0636060606;matin.fatigue@email.com;"11 rue du Réveil, Café-sur-Cernes"
+Talon;0647070707;marche.chaussure@email.com;"10 rue de la Pointe, Escarpin-les-Rues"
+Sapin;0658080808;noel.vert@email.com;"122 allée des Aiguilles, Forêt-sur-Neige"
+Glace;0669090909;froid.fondu@email.com;"88 boulevard des Cornets, Sorbetville"
+Avoine;0670101010;cheval.grain@email.com;"18 ferme du Foin, Granulopolis"
+Clou;0681111111;marteau.fixe@email.com;"4 rue du Bricolage, Castoville"
+Coin;0692121212;canard.place@email.com;"6 rue du Coin-Coin, Étang-les-Ronds"
