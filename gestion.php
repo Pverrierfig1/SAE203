@@ -110,7 +110,7 @@ else{
                 </div>
                 <div class="col card bg-success p-4 me-4">
                     <h3>Stockage utilisé par le partage</h3>
-                    <p>'.round(stockage("./data/users")/1024/1024).'Mo</p>
+                    <p>'.round(stockage("./data/users")/1024/1024,2).'Mo</p>
               </div>
           </div>
           <div class="div text-center mt-5 row">
