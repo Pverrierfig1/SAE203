@@ -16,9 +16,9 @@ foreach ($liste_util as $identifiant => $user) {  // $identifiant = clé (ex: je
     $prenom = $user['prenom'];
     $role = implode(", ", $user['roles']); // Le rôles est un tableau, on le transforme en chaîne
     $bio = $user['bio']; 
-    $photo = "images/images_utilisateur/image_defaut.jpg"; // image par défaut pour tous pour l'instant
+    $photo = "./images/images_utilisateur/image_defaut.png"; // image par défaut pour tous pour l'instant
     echo "<tr>";
-    echo "<td><img src='images/images_utilisateur/image_defaut.jpg' alt='Photo de $prenom $nom' width='80' height='80'></td>";
+    echo "<td><img src='./images/images_utilisateur/image_defaut.png' alt='Photo de $prenom $nom' width='80' height='80'></td>";
     echo "<td>$nom</td>";
     echo "<td>$prenom</td>";
     echo "<td>$role</td>";
