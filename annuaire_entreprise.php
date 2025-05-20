@@ -6,7 +6,11 @@ include("./scripts/functions.php");
 parametres($page,$description,$keywords);
 entete($page);
 navigation($page);
-$login = $_SESSION['username'];
+if (isset($_SESSION['username'])) {
+    $login = $_SESSION['username'];
+} else {
+    $login = null;
+}
 
 $liste_util = json_decode(file_get_contents("data/utilisateurs.json"),true);
 
@@ -25,6 +29,12 @@ echo "<br>";
 echo "<form method='POST' action='gestion.php'>";
 echo "<table class='table table-striped table-info'>";
 echo "<tr><th>Photo</th><th>Nom</th><th>Prenom</th><th>Fonction</th><th>Bio</th><th>Actions</th></tr>";
+echo "<h2>Ajouter un nouvel utilisateur : </h2><br>";
+if ($est_admin == true) {
+    echo "<button class='btn btn-success' type='submit' name='ajouter' value='ajouter'>Ajouter un utilisateur</button>";
+    echo"<br><br>";
+}
+
 // Parcours de chaque utilisateur dans le tableau JSON
 foreach ($liste_util as $identifiant => $user) {  // $identifiant = clé (ex: jean.roland), $user = tableau des infos
     $nom = $user['nom'];
@@ -54,7 +64,6 @@ foreach ($liste_util as $identifiant => $user) {  // $identifiant = clé (ex: je
     if ($est_admin == true) {
         echo "<button class='btn btn-warning' type='submit' name='modification' value='".$identifiant."'>Modifier</button> ";
         echo "<button class='btn btn-danger' type='submit' name='suppression' value='".$identifiant."'>Supprimer</button> ";
-        echo "<button class='btn btn-success' type='submit' name='ajouter' value='".$identifiant."'>Ajouter</button>";
     }
 
     // Si l'utilisateur est normal
