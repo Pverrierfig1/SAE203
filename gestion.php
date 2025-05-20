@@ -12,7 +12,7 @@ entete($page);
 
 navigation($page);
 
-if (isset($_POST["name"])){
+if (isset($_POST["name"])){ //traitement de l'inscription d'un utilisateur
 
   //echo("<pre>".print_r($_POST,true)."</pre>");
   $username = strtolower($_POST["prenom"]).".".strtolower($_POST["name"]); //clé = prenom.nom
@@ -34,7 +34,7 @@ if (isset($_POST["name"])){
       alert("<strong>Erreur !</strong> Email invalide.");
     }
 }
-else{
+elseif(isset($_POST["ajouter"])){ //affichage de l'inscription de l'utilisateur
 //les roles sont sous forme de tableau pour ne pas avoir a les transformer a la l'envoi du form
   echo('
 <div class="container">
@@ -82,6 +82,60 @@ else{
 </div>
   ');
 
+}
+elseif(isset($_POST["modification"])){ //
+
+}
+elseif(isset($_POST["suppression"])){ //
+
+}
+else{
+  echo('
+<div class="container-fluid row">
+           <div class="btn-group-vertical col-1">
+            <button type="button" class="btn btn-info">Tableau de bord</button>
+            <button type="button" class="btn btn-info">Ajout d\'employé</button>
+            <a href="./annuaire_entreprise.php" class="btn btn-info">Gérer les employés</a>
+          </div> 
+          <div class="row col text-center">
+            <h2 class="mt-4">Tableau de bord</h1>
+            <hr class="mt-4 mb-5">
+                <div class="col card bg-primary p-4 me-4">
+                    <h3>Nombres d\'employés</h3>
+                    <p>'.count($data).'</p>
+                </div>
+                <div class="col card bg-warning p-4 me-4">
+                    <h3>Nombre de clients</h3>
+                    <p>300</p>
+                </div>
+                <div class="col card bg-success p-4 me-4">
+                    <h3>Stockage utilisé par le partage</h3>
+                    <p>'.round(stockage("./data/users")/1024/1024).'Mo</p>
+              </div>
+          </div>
+          <div class="div text-center mt-5 row">
+              <div class="col card bg-secondary p-4 ms-4 me-4">
+                <h3>RAM utilisé par le serveur</h3>
+                <p>'.round(memory_get_usage()/1024/1024, 2).'Mo</p>
+              </div>
+              <div class="col card bg-dark p-4 text-white me-4">
+                <h3>Espace disponible</h3>
+                <p>'.(round(disk_free_space("./")/disk_total_space("./")*100,2)).'%</p>
+              </div>
+              <div class="col card bg-info p-4 me-4">
+                <h3>Espace disponible (en Go)</h3>
+                <p>'.round(disk_free_space("./")/1024/1024/1024).'Go</p>
+            </div>
+          </div>
+    </div>
+</div>
+<div class="container card bg-light p-5 mt-5 text-center">
+    <h2><u>Bienvenue sur le tableau de bord</u></h2>
+    <p>Gérez facilement le contenu, les utilisateurs et les paramètres du site grâce à cet espace centralisé.
+        Suivez les statistiques, effectuez des mises à jour et assurez le bon fonctionnement de la plateforme en toute simplicité.</p>
+</div>
+
+    ');
 }
 
 pieddepage();
