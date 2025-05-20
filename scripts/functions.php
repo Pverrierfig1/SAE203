@@ -39,6 +39,19 @@ function entete($titre){
         else{
           echo("<a href='./connexion.php' class='btn btn-info'>Connexion</a>");
           } 
+        if (isset($_SESSION['username'])){
+          echo "<br>";
+          $format = array(".png",".jpg",".jpeg");
+          $pp = "./images/default.jpg";
+          foreach ($format as $key => $value) {
+            $nom_photo = "./images/".strtolower($_SESSION['prenom']."_".$_SESSION['nom']).$value;
+            if (file_exists($nom_photo)){
+              $pp = $nom_photo;
+              break;
+            }
+          }
+          echo("<img src='".$pp."' alt='photo de profil utilisateur' width='100'>");
+        }
         echo("
         </div>
       </div>
