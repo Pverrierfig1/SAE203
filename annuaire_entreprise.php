@@ -42,7 +42,7 @@ foreach ($liste_util as $identifiant => $user) {  // $identifiant = clé (ex: je
     $role = implode(", ", $user['roles']); // Le rôles est un tableau, on le transforme en chaîne
     $bio = $user['bio']; 
 
-    $photo = "./images/images_utilisateur/image_defaut.png"; // image par défaut 
+    $photo = "./images/image_defaut.png"; // image par défaut 
     $prenom_nom = $prenom . "_" . $nom; //Permettra de retrouver l'image de l'utilisateur si elle existe
     $extensions = ['jpg', 'jpeg', 'png']; //liste des extensions possibles
 
