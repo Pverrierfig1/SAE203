@@ -33,8 +33,7 @@ function entete($titre){
         "); 
         if (isset($_SESSION['username'])){
           echo("<a href='./deconnexion.php' class='btn btn-danger'>Deconnexion</a><br>");
-          echo("<p class='mt-3'>Vous êtes connecté en tant que : <br>".$_SESSION['nom']." ".$_SESSION['prenom']." </p>
-          <a href='mailto:".$_SESSION['email']."' class='text-white'>".$_SESSION['email']."</a>");
+          echo("<p class='mt-3'>Vous êtes connecté en tant que : <br>".$_SESSION['nom']." ".$_SESSION['prenom']." </p>");
         } 
         else{
           echo("<a href='./connexion.php' class='btn btn-info'>Connexion</a>");
