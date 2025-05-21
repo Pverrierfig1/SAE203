@@ -84,11 +84,11 @@ function navigation($page){
         </li>
         <li class='nav-item'>
           <a class='nav-link " . ($page == 'Activités' ? 'active' : '') . "' href='./annuaire_fournisseurs.php'>Annuaires des fournisseurs partenaires</a>
-        </li>
-        <li class='nav-item'>
-          <a class='nav-link " . ($page == 'Partenaires' ? 'active' : '') . "' href='./annuaire_client.php'>Annuaire des clients</a>
-        </li>
-        ");
+        </li>");
+        if (admin() !== false) {echo("<li class='nav-item'>
+            <a class='nav-link " . ($page == 'Partenaires' ? 'active' : '') . "' href='./annuaire_client.php'>Annuaire des clients</a>
+        </li>");
+        };
         if (admin() !== false) {echo("<li class='nav-item'>
             <a class='nav-link " . ($page == 'wiki' ? 'active' : '') . "' href='./wiki.php'>Wiki</a>
           </li>");
