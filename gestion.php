@@ -9,9 +9,9 @@ function deleteFolder($folder) {
 	        $path = $folder."/".$child;
 
 	        if (is_dir($child)) {
-	            deleteFolder($child);
+	            deleteFolder($path);
 	        } else {
-	            unlink($child);
+	            unlink($path);
 	        }
         }
     }
