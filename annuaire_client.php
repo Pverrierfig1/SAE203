@@ -73,9 +73,8 @@ if (isset($_POST['save'])) {
         fclose($fp);
     }
 
-    header("Location: " . $_SERVER['PHP_SELF'] . "#client-$index");
+    header('Location: ' . $_SERVER['PHP_SELF'] . '#client' . $index);
     exit;
-
 }
 ?>
 
@@ -150,7 +149,8 @@ if (isset($_POST['edit'])) {
           <input type="text" class="form-control" name="adresse" value="<?= htmlspecialchars($line[3]) ?>" required>
         </div>
         <button type="submit" name="save" class="btn btn-success">Enregistrer</button>
-        <a href="<?= $_SERVER['PHP_SELF']; ?>#client-<?= $editIndex ?>" class="btn btn-secondary ms-2">Annuler</a>
+        <a href="<?= $_SERVER['PHP_SELF']; ?>" class="btn btn-secondary ms-2">Annuler</a>
+
 
       </form>
     </div>
