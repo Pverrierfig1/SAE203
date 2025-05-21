@@ -5,6 +5,37 @@ $keywords  = "default";
 
 include("./scripts/functions.php");
 
+$filename = './data/client.csv';
+$rows     = [];
+
+if (($handle = fopen($filename, 'r')) !== false) {
+    while (($data = fgetcsv($handle, 1000, ';')) !== false) {
+        $rows[] = $data;
+    }
+    fclose($handle);
+}
+
+if (isset($_GET['download'])) {
+    $index = (int) $_GET['download'];
+
+    if (!empty($rows[$index]) && count($rows[$index]) >= 4) {
+        list($nom, $tel, $email, $adresse) = $rows[$index];
+
+        $safeNom = preg_replace('/[^a-zA-Z0-9_-]/', '_', $nom);
+
+        header('Content-Type: text/plain; charset=utf-8');
+        header('Content-Disposition: attachment; filename="fiche_client_' . $safeNom . '.txt"');
+
+        echo "FICHE CLIENT - $nom\n";
+        echo "\n";
+        echo "Nom       : $nom\n";
+        echo "Téléphone : $tel\n";
+        echo "E-mail    : $email\n";
+        echo "Adresse   : $adresse\n";
+
+        exit;
+    }
+}
 
 parametres($page, $description, $keywords);
 entete($page);
@@ -22,15 +53,6 @@ navigation($page);
 
 <?php
 
-$filename = './data/client.csv';
-$rows     = [];
-
-if (($handle = fopen($filename, 'r')) !== false) {
-    while (($data = fgetcsv($handle, 1000, ';')) !== false) {
-        $rows[] = $data;
-    }
-    fclose($handle);
-}
 
 if (isset($_POST['save'])) {
     $index = (int) $_POST['index'];
@@ -72,7 +94,12 @@ if (isset($_POST['save'])) {
     <?php foreach ($rows as $index => $ligne): if ($index === 0) continue; // ignore l'entête
           if (count($ligne) < 4) continue; ?>
         <tr id="client-<?= $index ?>">
-          <td><?= htmlspecialchars($ligne[0]) ?></td>
+            <td>
+            <a href="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>?download=<?= $index ?>" class="text-decoration-none">
+                <?= htmlspecialchars($ligne[0]) ?>
+            </a>
+            </td>
+
           <td><?= htmlspecialchars($ligne[1]) ?></td>
           <td><?= htmlspecialchars($ligne[2]) ?></td>
           <td><?= htmlspecialchars($ligne[3]) ?></td>
