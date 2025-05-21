@@ -51,7 +51,9 @@ if (isset($_POST['save'])) {
         fclose($fp);
     }
 
-    echo '<div class="alert alert-success text-center">Client modifié avec succès.</div>';
+    header("Location: " . $_SERVER['PHP_SELF'] . "#client-$index");
+    exit;
+
 }
 ?>
 
@@ -69,16 +71,17 @@ if (isset($_POST['save'])) {
     <tbody>
     <?php foreach ($rows as $index => $ligne): if ($index === 0) continue; // ignore l'entête
           if (count($ligne) < 4) continue; ?>
-        <tr>
+        <tr id="client-<?= $index ?>">
           <td><?= htmlspecialchars($ligne[0]) ?></td>
           <td><?= htmlspecialchars($ligne[1]) ?></td>
           <td><?= htmlspecialchars($ligne[2]) ?></td>
           <td><?= htmlspecialchars($ligne[3]) ?></td>
           <td>
-            <form method="post" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" class="m-0">
-                <input type="hidden" name="edit" value="<?= $index ?>">
-                <button type="submit" class="btn btn-sm btn-primary">Modifier</button>
+            <form method="post" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>#edit-form" class="m-0">
+              <input type="hidden" name="edit" value="<?= $index ?>">
+              <button type="submit" class="btn btn-sm btn-primary">Modifier</button>
             </form>
+
 
 
           </td>
@@ -96,7 +99,7 @@ if (isset($_POST['edit'])) {
     if (!empty($rows[$editIndex])) {
         $line = $rows[$editIndex];
 ?>
-  <div class="card mt-4">
+  <div class="card mt-4" id="edit-form">
     <div class="card-header bg-warning text-white">
       Modifier le client : <?= htmlspecialchars($line[0]) ?>
     </div>
@@ -120,7 +123,8 @@ if (isset($_POST['edit'])) {
           <input type="text" class="form-control" name="adresse" value="<?= htmlspecialchars($line[3]) ?>" required>
         </div>
         <button type="submit" name="save" class="btn btn-success">Enregistrer</button>
-        <a href="<?= $_SERVER['PHP_SELF']; ?>" class="btn btn-secondary ms-2">Annuler</a>
+        <a href="<?= $_SERVER['PHP_SELF']; ?>#client-<?= $editIndex ?>" class="btn btn-secondary ms-2">Annuler</a>
+
       </form>
     </div>
   </div>
