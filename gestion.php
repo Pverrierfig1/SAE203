@@ -107,7 +107,9 @@ elseif(isset($_POST["modification"])){ //
 
 }
 elseif(isset($_POST["suppression"])){ // On supprime les donnnées de l'utilisateur, image, les upload, ect
-	$photo = pp_search($data[$_POST["suppression"]["prenom"],$data[$_POST["suppression"]["nom"]);
+  $prenom = $data[$_POST["suppression"]]["prenom"];
+  $nom = $data[$_POST["suppression"]]["nom"];
+	$photo = pp_search($prenom,$nom);
 	unset($data[$_POST["suppression"]]);
 	file_put_contents("./data/utilisateurs.json", json_encode($data));
 	if (is_dir("./data/users/".$_POST["suppression"])){
@@ -118,7 +120,7 @@ elseif(isset($_POST["suppression"])){ // On supprime les donnnées de l'utilisat
 	}
 	echo('
     <div class="alert alert-success mt-5 container">
-          <strong>Utilisateur supprimé !</strong>
+          <p>L\'utilisateur <strong>'.$prenom.' '.$nom.'</strong> à été supprimé</p>
     </div>');
 }
 else{
