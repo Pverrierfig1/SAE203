@@ -30,29 +30,30 @@ function entete($titre){
           <h1>Hydrofix</h1>
         </div>
         <div class='mt-4 col text-center'>
+          <div class='row'>
+            <div class='mt-2 col'>
         "); 
         if (isset($_SESSION['username'])){
           echo("<a href='./deconnexion.php' class='btn btn-danger'>Deconnexion</a><br>");
-          echo("<p class='mt-3'>Vous êtes connecté en tant que : <br>".$_SESSION['nom']." ".$_SESSION['prenom']." </p>
-          <a href='mailto:".$_SESSION['email']."' class='text-white'>".$_SESSION['email']."</a>");
+          echo("<p class='mt-2'>Vous êtes connecté en tant que : <br><B>".$_SESSION['nom']." ".$_SESSION['prenom']." </B></p>");
         } 
         else{
           echo("<a href='./connexion.php' class='btn btn-info'>Connexion</a>");
-          } 
-        if (isset($_SESSION['username'])){
-          echo "<br>";
-          $format = array(".png",".jpg",".jpeg");
-          $pp = "./images/default.jpg";
-          foreach ($format as $key => $value) {
-            $nom_photo = "./images/".strtolower($_SESSION['prenom']."_".$_SESSION['nom']).$value;
-            if (file_exists($nom_photo)){
-              $pp = $nom_photo;
-              break;
-            }
-          }
-          echo("<img src='".$pp."' alt='photo de profil utilisateur' width='100'>");
-        }
+        };
         echo("
+        </div>
+        <div class='mt-1 col'>");
+          if (isset($_SESSION['username'])){
+          echo "<br>";
+          $pp = "./images/default.jpg";
+          $search = pp_search($_SESSION['prenom'], $_SESSION['nom']);
+          if (file_exists($search)){
+            $pp = $search;
+          }
+          echo("<img src='".$pp."' alt='photo de profil utilisateur' width='100' class='rounded'>");
+        };
+        echo("
+        </div>
         </div>
       </div>
     </div>
@@ -153,6 +154,17 @@ function stockage($rep){
     }
   }
   return $taille;
+}
+
+function pp_search($prenom, $nom){
+  $format = array(".png",".jpg",".jpeg");
+  foreach ($format as $key => $value) {
+    $nom_photo = "./images/images_utilisateur/".strtolower($prenom."_".$nom).$value;
+    if (file_exists($nom_photo)){
+      return $nom_photo;
+    }
+  }
+  return;
 }
 
 ?>
