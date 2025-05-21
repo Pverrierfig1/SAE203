@@ -3,6 +3,21 @@ $page = "Gestion des utilisateurs";
 $description = "Page de gestion";
 $keywords = "default";
 
+function deleteFolder($folder) {
+    foreach (scandir($folder) as $child) {
+        if ($child != "." && $child != "..") {
+	        $path = $folder."/".$child;
+
+	        if (is_dir($child)) {
+	            deleteFolder($child);
+	        } else {
+	            unlink($child);
+	        }
+        }
+    }
+    rmdir($folder);
+}
+
 include("./scripts/functions.php");
 $data = json_decode(file_get_contents("./data/utilisateurs.json"),true);
 
@@ -91,8 +106,20 @@ elseif(isset($_POST["ajouter"])){ //affichage de l'inscription de l'utilisateur
 elseif(isset($_POST["modification"])){ //
 
 }
-elseif(isset($_POST["suppression"])){ //
-
+elseif(isset($_POST["suppression"])){ // On supprime les donnnées de l'utilisateur, image, les upload, ect
+	$photo = pp_search($data[$_POST["suppression"]["prenom"],$data[$_POST["suppression"]["nom"]);
+	unset($data[$_POST["suppression"]]);
+	file_put_contents("./data/utilisateurs.json", json_encode($data));
+	if (is_dir("./data/users/".$_POST["suppression"])){
+		deleteFolder("./data/users/".$_POST["suppression"]); //rmdir ne permet pas de supprimer tout les fichiers dedans, on fait donc une fonction récursive qui supprime tout dedans d'abord...
+	}
+	if (file_exists($photo)){
+		unlink($photo);
+	}
+	echo('
+    <div class="alert alert-success mt-5 container">
+          <strong>Utilisateur supprimé !</strong>
+    </div>');
 }
 else{
   echo('
