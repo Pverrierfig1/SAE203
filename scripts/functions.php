@@ -50,7 +50,7 @@ function entete($titre){
           if (file_exists($search)){
             $pp = $search;
           }
-          echo("<img src='".$pp."' alt='photo de profil utilisateur' width='100' class='rounded'>");
+          echo("<a href='./modif_profil.php'><img src='".$pp."' alt='photo de profil utilisateur' width='100' class='rounded'></a>");
         };
         echo("
         </div>
