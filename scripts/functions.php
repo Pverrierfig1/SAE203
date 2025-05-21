@@ -160,4 +160,17 @@ function stockage($rep){
   return $taille;
 }
 
+function pp_search($prenom, $nom){
+  $format = array(".png",".jpg",".jpeg");
+  $file;
+  foreach ($format as $key => $value) {
+    $nom_photo = "./images/images_utilisateur/".strtolower($prenom."_".$nom).$value;
+    if (file_exists($nom_photo)){
+    $file = $nom_photo;
+    break;
+    }
+  }
+  return $file;
+}
+
 ?>
