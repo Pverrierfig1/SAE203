@@ -45,14 +45,10 @@ function entete($titre){
         <div class='mt-1 col'>");
           if (isset($_SESSION['username'])){
           echo "<br>";
-          $format = array(".png",".jpg",".jpeg");
           $pp = "./images/default.jpg";
-          foreach ($format as $key => $value) {
-            $nom_photo = "./images/images_utilisateur/".strtolower($_SESSION['prenom']."_".$_SESSION['nom']).$value;
-            if (file_exists($nom_photo)){
-              $pp = $nom_photo;
-              break;
-            }
+          $search = pp_search($_SESSION['prenom'], $_SESSION['nom']);
+          if (file_exists($search)){
+            $pp = $search;
           }
           echo("<img src='".$pp."' alt='photo de profil utilisateur' width='100' class='rounded'>");
         };
@@ -162,15 +158,13 @@ function stockage($rep){
 
 function pp_search($prenom, $nom){
   $format = array(".png",".jpg",".jpeg");
-  $file;
   foreach ($format as $key => $value) {
     $nom_photo = "./images/images_utilisateur/".strtolower($prenom."_".$nom).$value;
     if (file_exists($nom_photo)){
-    $file = $nom_photo;
-    break;
+      return $nom_photo;
     }
   }
-  return $file;
+  return;
 }
 
 ?>
