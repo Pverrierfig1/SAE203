@@ -19,6 +19,7 @@ function deleteFolder($folder) {
 }
 
 include("./scripts/functions.php");
+
 $data = json_decode(file_get_contents("./data/utilisateurs.json"),true);
 
 parametres($page,$description,$keywords);
@@ -124,6 +125,7 @@ elseif(isset($_POST["suppression"])){ // On supprime les donnnées de l'utilisat
     </div>');
 }
 else{
+  $file = file("./data/client.csv",FILE_SKIP_EMPTY_LINES);
   echo('
 <div class="container-fluid row">
           <div class="btn-group-vertical col-1">
@@ -142,7 +144,7 @@ else{
                 </div>
                 <div class="col card bg-warning p-4 me-4">
                     <h3>Nombre de clients</h3>
-                    <p>300</p>
+                    <p>'.(count($file)-1).'</p>
                 </div>
                 <div class="col card bg-success p-4 me-4">
                     <h3>Stockage utilisé par le partage</h3>
