@@ -41,17 +41,9 @@ foreach ($liste_util as $identifiant => $user) {  // $identifiant = clé (ex: je
     $prenom = $user['prenom'];
     $role = implode(", ", $user['roles']); // Le rôles est un tableau, on le transforme en chaîne
     $bio = $user['bio']; 
-
-    $photo = "./images/image_defaut.png"; // image par défaut 
-    $prenom_nom = $prenom . "_" . $nom; //Permettra de retrouver l'image de l'utilisateur si elle existe
-    $extensions = ['jpg', 'jpeg', 'png']; //liste des extensions possibles
-
-    foreach ($extensions as $ext) { //boucles qui parcour le tableau d'extensions
-        $chemin_fichier = "images/images_utilisateur/" . $prenom_nom . "." . $ext; //chemin vers la photo de profil de l'utilisateur
-        if (file_exists($chemin_fichier)) { 
-            $photo = $chemin_fichier;
-            break;
-        }
+    $photo = pp_search($nom,$prenom);
+    if (!file_exists($photo)){
+        $photo = "./images/default.jpg";
     }
     //ligne du tableau
     echo "<tr>";
