@@ -20,7 +20,7 @@ if (isset($liste_util[$login]['roles'])) {
 }
 
 $est_admin = false;
-if (in_array('administrateur', $roles_connecte)) {
+if (in_array('Administrateur', $roles_connecte)) {
     $est_admin = true;
 }
 echo "<div class='container-fluid ml-5 mr-5' >";
@@ -60,11 +60,7 @@ foreach ($liste_util as $identifiant => $user) {  // $identifiant = clé (ex: je
 
     // Si l'utilisateur est normal
     else {
-        if ($identifiant == $login) {
-            echo "<button class='btn btn-warning' type='submit' name='modification' value='$identifiant'>Modifier mon profil</button>";
-        } else {
-            echo "-";
-        }
+     echo "-";
     }
     echo "</td>";
     echo "</tr>";
