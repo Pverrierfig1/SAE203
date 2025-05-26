@@ -48,6 +48,12 @@ navigation($page);
 			          <td>
 			            <button class="btn btn-sm btn-outline-secondary voir" data-bs-toggle="modal" data-bs-target="#visualiseur" data-file="'.$chemin.'">👁️ Consulter</button>
 			            <a href="'.$chemin.'" class="btn btn-sm btn-primary" download>📥 Télécharger</a>
+			            <form method="POST">
+			            	<button type="submit" name="bouton_suppression" class="btn btn-sm btn-danger suppression">🗑️ Supprimer</button>
+			            </form>
+			            ');
+      				if (isset($_POST['bouton_suppression'])){suppression($chemin)};
+      				echo('
 			          </td>
 			        </tr>');
       			} // l'attribute data-bs-target est pour boostrap afin qu'il affiche en model la frame avec l'id de l'attribute. L'attribute data-file est pour le js afin qu'il affiche dans l'iframe le doc.
