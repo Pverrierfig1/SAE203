@@ -73,24 +73,30 @@ function navigation($page){
       <ul class='navbar-nav'>
         <li class='nav-item'>
           <a class='nav-link " . ($page == 'accueil' ? 'active' : '') . "' href='./accueil.php'>Accueil</a>
-        </li>
-        <li class='nav-item dropdown'>
+        </li>");
+        if (isset($_SESSION["username"])){
+        echo("<li class='nav-item dropdown'>
           <a class='nav-link " . ($page == 'Qui' ? 'active' : '') . " dropdown-toggle' href='#' role='button' data-bs-toggle='dropdown'>Gestionnaire de fichiers</a>
           <ul class='dropdown-menu'>
             <li><a class='dropdown-item' href='./partage.php'>Visualisation</a></li>
             <li><a class='dropdown-item' href='./depot.php'>Modification</a></li>
           </ul>
-        </li>
-        <li class='nav-item'>
-          <a class='nav-link " . ($page == 'Histoire' ? 'active' : '') . "' href='./annuaire_entreprise.php'>Annuaire entreprise</a>
-        </li>
-        <li class='nav-item'>
+        </li>");
+        };
+        if (isset($_SESSION["username"])){
+        echo("<li class='nav-item'>
+          <a class='nav-link " . ($page == 'annuaire_entreprise.php' ? 'active' : '') . "' href='./annuaire_entreprise.php'>Annuaire entreprise</a>
+        </li>");
+        };
+        if (isset($_SESSION["username"])){
+        echo("<li class='nav-item'>
           <a class='nav-link " . ($page == 'Activités' ? 'active' : '') . "' href='./annuaire_fournisseurs.php'>Annuaires des fournisseurs partenaires</a>
-        </li>
-        <li class='nav-item'>
-          <a class='nav-link " . ($page == 'Partenaires' ? 'active' : '') . "' href='./annuaire_client.php'>Annuaire des clients</a>
-        </li>
-        ");
+        </li>");
+        };
+        if (isset($_SESSION["username"])) {echo("<li class='nav-item'>
+            <a class='nav-link " . ($page == 'Annuaire des clients' ? 'active' : '') . "' href='./annuaire_client.php'>Annuaire des clients</a>
+        </li>");
+        };
         if (admin() !== false) {echo("<li class='nav-item'>
             <a class='nav-link " . ($page == 'wiki' ? 'active' : '') . "' href='./wiki.php'>Wiki</a>
           </li>");
@@ -166,6 +172,10 @@ function pp_search($prenom, $nom){
     }
   }
   return;
+}
+
+function suppression($file){
+  unlink($file);
 }
 
 ?>
