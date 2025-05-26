@@ -12,7 +12,7 @@ entete($page);
 navigation($page);
 
 ?>
-<script src="./scripts/JavaScript.js" async></script> <!--A mettre dans le header pour cette page svp-->
+<script src="./scripts/JavaScript.js" async></script> <!--A mettre dans le header pour cette page--> 
 
 <div class="container mt-4">
   <h1 class="mb-4">📁 Espace de partage</h1>
