@@ -23,7 +23,7 @@ $est_admin = false;
 if (in_array('Administrateur', $roles_connecte)) {
     $est_admin = true;
 }
-echo "<div class='container-fluid ml-5 mr-5' >";
+echo "<div class='container ml-5 mr-5' >";
 echo "<h1> 📖 Annuaire de l'entreprise </h1> ";
 echo "<br>";
 echo "<form method='POST' action='gestion.php'>";
@@ -67,7 +67,8 @@ foreach ($liste_util as $identifiant => $user) {  // $identifiant = clé (ex: je
     
 }
 echo "</table>";
-echo "</form>";
+echo "</form>
+</div>";
 
 pieddepage();
 ?>
