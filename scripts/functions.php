@@ -20,7 +20,8 @@ function parametres($titre,$description,$keywords){
 }
 
 function entete($titre){
-  echo("<header class='p-3 bg-primary text-white'>
+  echo("<script src='./scripts/JavaScript.js' async></script>
+    <header class='p-3 bg-primary text-white'>
     <div class='container-fuild'>
       <div class='row'>
         <div class='col text-start img-fluid'>
