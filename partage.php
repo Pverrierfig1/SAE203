@@ -52,7 +52,7 @@ navigation($page);
 			            	<button type="submit" name="bouton_suppression" class="btn btn-sm btn-danger suppression">🗑️ Supprimer</button>
 			            </form>
 			            ');
-      				if (isset($_POST['bouton_suppression'])){suppression($chemin)};
+      				if (isset($_POST['bouton_suppression'])){suppression($chemin)}; // si le bouton "bouton_suppression" est pressé alors l'appelle de la fonctione suppression avec l'argument $chemin sera effectué
       				echo('
 			          </td>
 			        </tr>');
