@@ -20,10 +20,10 @@ if (isset($liste_util[$login]['roles'])) {
 }
 
 $est_admin = false;
-if (in_array('administrateur', $roles_connecte)) {
+if (in_array('Administrateur', $roles_connecte)) {
     $est_admin = true;
 }
-echo "<div class='container-fluid ml-5 mr-5' >";
+echo "<div class='container ml-5 mr-5' >";
 echo "<h1> 📖 Annuaire de l'entreprise </h1> ";
 echo "<br>";
 echo "<form method='POST' action='gestion.php'>";
@@ -41,17 +41,9 @@ foreach ($liste_util as $identifiant => $user) {  // $identifiant = clé (ex: je
     $prenom = $user['prenom'];
     $role = implode(", ", $user['roles']); // Le rôles est un tableau, on le transforme en chaîne
     $bio = $user['bio']; 
-
-    $photo = "./images/image_defaut.png"; // image par défaut 
-    $prenom_nom = $prenom . "_" . $nom; //Permettra de retrouver l'image de l'utilisateur si elle existe
-    $extensions = ['jpg', 'jpeg', 'png']; //liste des extensions possibles
-
-    foreach ($extensions as $ext) { //boucles qui parcour le tableau d'extensions
-        $chemin_fichier = "images/images_utilisateur/" . $prenom_nom . "." . $ext; //chemin vers la photo de profil de l'utilisateur
-        if (file_exists($chemin_fichier)) { 
-            $photo = $chemin_fichier;
-            break;
-        }
+    $photo = pp_search($nom,$prenom);
+    if (!file_exists($photo)){
+        $photo = "./images/default.jpg";
     }
     //ligne du tableau
     echo "<tr>";
@@ -68,18 +60,15 @@ foreach ($liste_util as $identifiant => $user) {  // $identifiant = clé (ex: je
 
     // Si l'utilisateur est normal
     else {
-        if ($identifiant == $login) {
-            echo "<button class='btn btn-warning' type='submit' name='modification' value='$identifiant'>Modifier mon profil</button>";
-        } else {
-            echo "-";
-        }
+     echo "-";
     }
     echo "</td>";
     echo "</tr>";
     
 }
 echo "</table>";
-echo "</form>";
+echo "</form>
+</div>";
 
 pieddepage();
 ?>

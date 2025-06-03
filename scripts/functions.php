@@ -20,7 +20,8 @@ function parametres($titre,$description,$keywords){
 }
 
 function entete($titre){
-  echo("<header class='p-3 bg-primary text-white'>
+  echo("<script src='./scripts/JavaScript.js' async></script>
+    <header class='p-3 bg-primary text-white'>
     <div class='container-fuild'>
       <div class='row'>
         <div class='col text-start img-fluid'>
@@ -30,29 +31,30 @@ function entete($titre){
           <h1>Hydrofix</h1>
         </div>
         <div class='mt-4 col text-center'>
+          <div class='row'>
+            <div class='mt-2 col'>
         "); 
         if (isset($_SESSION['username'])){
           echo("<a href='./deconnexion.php' class='btn btn-danger'>Deconnexion</a><br>");
-          echo("<p class='mt-3'>Vous êtes connecté en tant que : <br>".$_SESSION['nom']." ".$_SESSION['prenom']." </p>
-          <a href='mailto:".$_SESSION['email']."' class='text-white'>".$_SESSION['email']."</a>");
+          echo("<p class='mt-2'>Vous êtes connecté en tant que : <br><B>".$_SESSION['nom']." ".$_SESSION['prenom']." </B></p>");
         } 
         else{
           echo("<a href='./connexion.php' class='btn btn-info'>Connexion</a>");
-          } 
-        if (isset($_SESSION['username'])){
-          echo "<br>";
-          $format = array(".png",".jpg",".jpeg");
-          $pp = "./images/default.jpg";
-          foreach ($format as $key => $value) {
-            $nom_photo = "./images/".strtolower($_SESSION['prenom']."_".$_SESSION['nom']).$value;
-            if (file_exists($nom_photo)){
-              $pp = $nom_photo;
-              break;
-            }
-          }
-          echo("<img src='".$pp."' alt='photo de profil utilisateur' width='100'>");
-        }
+        };
         echo("
+        </div>
+        <div class='mt-1 col'>");
+          if (isset($_SESSION['username'])){
+          echo "<br>";
+          $pp = "./images/default.jpg";
+          $search = pp_search($_SESSION['prenom'], $_SESSION['nom']);
+          if (file_exists($search)){
+            $pp = $search;
+          }
+          echo("<a href='./modif_profil.php'><img src='".$pp."' alt='photo de profil utilisateur' width='100' class='rounded'></a>");
+        };
+        echo("
+        </div>
         </div>
       </div>
     </div>
@@ -71,22 +73,28 @@ function navigation($page){
       <ul class='navbar-nav'>
         <li class='nav-item'>
           <a class='nav-link " . ($page == 'accueil' ? 'active' : '') . "' href='./accueil.php'>Accueil</a>
-        </li>
-        <li class='nav-item dropdown'>
+        </li>");
+        if (isset($_SESSION["username"])){
+        echo("<li class='nav-item dropdown'>
           <a class='nav-link " . ($page == 'Qui' ? 'active' : '') . " dropdown-toggle' href='#' role='button' data-bs-toggle='dropdown'>Gestionnaire de fichiers</a>
           <ul class='dropdown-menu'>
             <li><a class='dropdown-item' href='./partage.php'>Visualisation</a></li>
             <li><a class='dropdown-item' href='./depot.php'>Modification</a></li>
           </ul>
-        </li>
-        <li class='nav-item'>
-          <a class='nav-link " . ($page == 'Histoire' ? 'active' : '') . "' href='./annuaire_entreprise.php'>Annuaire entreprise</a>
-        </li>
-        <li class='nav-item'>
+        </li>");
+        };
+        if (isset($_SESSION["username"])){
+        echo("<li class='nav-item'>
+          <a class='nav-link " . ($page == 'annuaire_entreprise.php' ? 'active' : '') . "' href='./annuaire_entreprise.php'>Annuaire entreprise</a>
+        </li>");
+        };
+        if (isset($_SESSION["username"])){
+        echo("<li class='nav-item'>
           <a class='nav-link " . ($page == 'Activités' ? 'active' : '') . "' href='./annuaire_fournisseurs.php'>Annuaires des fournisseurs partenaires</a>
         </li>");
-        if (admin() !== false) {echo("<li class='nav-item'>
-            <a class='nav-link " . ($page == 'Partenaires' ? 'active' : '') . "' href='./annuaire_client.php'>Annuaire des clients</a>
+        };
+        if (isset($_SESSION["username"])) {echo("<li class='nav-item'>
+            <a class='nav-link " . ($page == 'Annuaire des clients' ? 'active' : '') . "' href='./annuaire_client.php'>Annuaire des clients</a>
         </li>");
         };
         if (admin() !== false) {echo("<li class='nav-item'>
@@ -153,6 +161,21 @@ function stockage($rep){
     }
   }
   return $taille;
+}
+
+function pp_search($prenom, $nom){
+  $format = array(".png",".jpg",".jpeg");
+  foreach ($format as $key => $value) {
+    $nom_photo = "./images/images_utilisateur/".strtolower($prenom."_".$nom).$value;
+    if (file_exists($nom_photo)){
+      return $nom_photo;
+    }
+  }
+  return;
+}
+
+function suppression($file){
+  unlink($file);
 }
 
 ?>
