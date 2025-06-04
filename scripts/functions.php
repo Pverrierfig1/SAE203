@@ -65,14 +65,14 @@ function navigation($page){
   echo( "
   <nav class='navbar navbar-expand-lg navbar-light bg-light'>
   <div class='container'>
-    <a class='navbar-brand' href='../accueil_wordpress.html'>Hydrofix</a>
+    <a class='navbar-brand' href='./wordpress/index.php'>Hydrofix</a>
     <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
       <span class='navbar-toggler-icon'></span>
     </button>
     <div class='collapse navbar-collapse justify-content-center' id='navbarNav'>
       <ul class='navbar-nav'>
         <li class='nav-item'>
-          <a class='nav-link " . ($page == 'accueil' ? 'active' : '') . "' href='./accueil.php'>Accueil</a>
+          <a class='nav-link " . ($page == 'Accueil' ? 'active' : '') . "' href='./accueil.php'>Accueil</a>
         </li>");
         if (isset($_SESSION["username"])){
         echo("<li class='nav-item dropdown'>
@@ -85,7 +85,7 @@ function navigation($page){
         };
         if (isset($_SESSION["username"])){
         echo("<li class='nav-item'>
-          <a class='nav-link " . ($page == 'annuaire_entreprise.php' ? 'active' : '') . "' href='./annuaire_entreprise.php'>Annuaire entreprise</a>
+          <a class='nav-link " . ($page == 'Annuaire entreprise' ? 'active' : '') . "' href='./annuaire_entreprise.php'>Annuaire entreprise</a>
         </li>");
         };
         if (isset($_SESSION["username"])){
@@ -97,8 +97,13 @@ function navigation($page){
             <a class='nav-link " . ($page == 'Annuaire des clients' ? 'active' : '') . "' href='./annuaire_client.php'>Annuaire des clients</a>
         </li>");
         };
+        if (isset($_SESSION["username"])){
+        echo("<li class='nav-item'>
+          <a class='nav-link " . ($page == 'Gestion des fournisseurs' ? 'active' : '') . "' href='./gestion_fournisseur.php'>Gestion des fournisseurs</a>
+        </li>");
+        };
         if (admin() !== false) {echo("<li class='nav-item'>
-            <a class='nav-link " . ($page == 'wiki' ? 'active' : '') . "' href='./wiki.php'>Wiki</a>
+            <a class='nav-link " . ($page == 'Wiki' ? 'active' : '') . "' href='./wiki.php'>Wiki</a>
           </li>");
         };
         echo("
