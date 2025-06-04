@@ -1,5 +1,5 @@
 <?php
-$page = "Page de partage";
+$page = "Partage";
 $description = "Page de partage";
 $keywords = "partage";
 

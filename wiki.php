@@ -1,5 +1,5 @@
 <?php
-$page = "wiki";
+$page = "Wiki";
 $description = "Page Wiki";
 $keywords = "wiki";
 

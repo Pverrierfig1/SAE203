@@ -1,7 +1,7 @@
 <?php
-$page = "annuaire_partenaire.php";
-$description = "Page annuaire des fournisseurs partenaires";
-$keywords = "fournisseur, partenaire, logo, description";
+$page = "Annuaire des fournisseur";
+$description = "Page annuaire des fournisseurs";
+$keywords = "annuraire fournisseurs";
 include("./scripts/functions.php");
 parametres($page, $description, $keywords);
 entete($page);

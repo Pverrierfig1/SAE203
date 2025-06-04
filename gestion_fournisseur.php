@@ -1,7 +1,7 @@
 <?php
-$page = "gestion_fournisseur.php";
+$page = "Gestion des fournisseurs";
 $description = "Page de gestion des partenaires";
-$keywords = "fournisseurs, partenaires, plomberie, logo";
+$keywords = "fournisseurs";
 
 include("./scripts/functions.php");
 
