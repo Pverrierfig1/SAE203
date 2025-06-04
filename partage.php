@@ -33,9 +33,10 @@ navigation($page);
       </thead>
       <tbody>
       <?php
+      if (isset($_POST['bouton_suppression'])){suppression($_POST['bouton_suppression']);} // si le bouton "bouton_suppression" est pressé alors l'appelle de la fonctione suppression avec l'argument $chemin sera effectué
 
       foreach (scandir("./data/users") as $dossier) {
-		if ($dossier != "." && $dossier != "..") { //il faut retirer les . et .. car scandir les met dans la table
+				if ($dossier != "." && $dossier != "..") { //il faut retirer les . et .. car scandir les met dans la table
       		foreach(scandir("./data/users/".$dossier) as $fichier){
       			if ($fichier != "." && $fichier != "..") {
       				$chemin = "./data/users/".$dossier."/".$fichier;
@@ -48,15 +49,13 @@ navigation($page);
 			          <td>
 			            <button class="btn btn-sm btn-outline-secondary voir" data-bs-toggle="modal" data-bs-target="#visualiseur" data-file="'.$chemin.'">👁️ Consulter</button>
 			            <a href="'.$chemin.'" class="btn btn-sm btn-primary" download>📥 Télécharger</a>
-			            <form method="POST">
-			            	<button type="submit" name="bouton_suppression" class="btn btn-sm btn-danger suppression">🗑️ Supprimer</button>
+			            <form action="./depot.php" method="POST">
+			            	<input type="hidden" name="nomfichier" value="'.$fichier.'">
+			            	<button type="submit" name="bouton_suppression" class="btn btn-sm btn-danger suppression" value="'.$chemin.'">🗑️ Supprimer</button>
 			            </form>
-			            ');
-      				if (isset($_POST['bouton_suppression'])){suppression($chemin)}; // si le bouton "bouton_suppression" est pressé alors l'appelle de la fonctione suppression avec l'argument $chemin sera effectué
-      				echo('
 			          </td>
 			        </tr>');
-      			} // l'attribute data-bs-target est pour boostrap afin qu'il affiche en model la frame avec l'id de l'attribute. L'attribute data-file est pour le js afin qu'il affiche dans l'iframe le doc.
+      			}// l'attribute data-bs-target est pour boostrap afin qu'il affiche en model la frame avec l'id de l'attribute. L'attribute data-file est pour le js afin qu'il affiche dans l'iframe le doc.
       		}
       	}
       }
