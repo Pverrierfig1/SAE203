@@ -5,7 +5,7 @@ $keywords  = "annuaire_client";
 
 include("./scripts/functions.php");
 
-$colonnes     = [];
+$colonnes = [];
 
 if (($fichier = fopen('./data/client.csv', 'r')) !== false) {
     while (($contenu = fgetcsv($fichier, 1000, ';')) !== false) {
@@ -17,8 +17,8 @@ if (($fichier = fopen('./data/client.csv', 'r')) !== false) {
 if (isset($_GET['download'])) {
     $index = (int) $_GET['download'];
 
-    if (!empty($colonnes[$index]) && count($collones[$index]) >= 4) {
-        list($nom, $tel, $email, $adresse) = $collones[$index];
+    if (!empty($colonnes[$index]) && count($colonnes[$index]) >= 4) {
+        list($nom, $tel, $email, $adresse) = $colonnes[$index];
 
         $nomnettoye = preg_replace('/[^a-zA-Z0-9_-]/', '_', $nom);  /*'preg_replace' permet de nettoyer les caractères dans la chaine, on retrouve différentes option
                                                                     "^" permet de siginifier tout les caractères qui ne sont pas dans cette liste seront supprimé, on 
