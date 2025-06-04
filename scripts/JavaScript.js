@@ -98,7 +98,7 @@ if (window.location.pathname == "/SAE203/partage.php"){
 
 
 let sequence = ['z', 'd', 's', 'q'];
-let link = array("https://drive.google.com/file/d/1gKEho82S4-Kt6SnfBlRTPiu6HceJIZ4-/view?usp=drive_link","https://cdn.discordapp.com/attachments/1282612270391889943/1376453330892623983/sc1.jpg?ex=6835618f&is=6834100f&hm=7a583950d23861b9835576815482647b8ca321a6a9e22c4b25523a0b8de8a435&");
+let link = array("https://drive.google.com/file/d/1J_RzsOlgyiRmsL-KWKzuGgX7nIn4-KM_/view?usp=drive_link","https://drive.google.com/file/d/1jZVjssrsoTYcYIsOX3dSAeTapwmL7hGA/view?usp=drive_link");
 let i = 0;
 
 function onEvent(event){
