@@ -1,7 +1,7 @@
 <?php
 $page = "Page de partage";
 $description = "Page de partage";
-$keywords = "default";
+$keywords = "partage";
 
 include("./scripts/functions.php");
 

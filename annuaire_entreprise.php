@@ -1,7 +1,7 @@
 <?php
-$page = "annuaire_entreprise.php";
+$page = "Annuaire de l'entreprise";
 $description = "Page annuaire de l'entreprise";
-$keywords = "nom, prénom, fonction, photo, bio";
+$keywords = "annuaire_entreprise";
 include("./scripts/functions.php");
 parametres($page,$description,$keywords);
 entete($page);

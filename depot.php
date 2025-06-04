@@ -1,7 +1,7 @@
 <?php
-$page = "acceuil.php";
-$description = "Page d'accueil";
-$keywords = "default";
+$page = "Dépot";
+$description = "Page dépot";
+$keywords = "dépot";
 
 include("./scripts/functions.php");
 parametres($page,$description,$keywords);

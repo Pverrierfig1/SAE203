@@ -1,7 +1,7 @@
 <?php
 $page = "Gestion des utilisateurs";
 $description = "Page de gestion";
-$keywords = "default";
+$keywords = "gestion";
 
 $roles = ["Administrateur", "Manager", "Direction", "Salarié"];
 

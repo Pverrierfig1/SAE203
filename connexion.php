@@ -1,7 +1,7 @@
 <?php
-$page = "Gestion des utilisateurs";
-$description = "Page de gestion";
-$keywords = "default";
+$page = "Connexion";
+$description = "Page de connexion";
+$keywords = "connexion";
 
 include("./scripts/functions.php");
 $data = json_decode(file_get_contents("./data/utilisateurs.json"),true);

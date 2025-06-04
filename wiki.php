@@ -1,7 +1,7 @@
 <?php
-$page = "wiki.php";
+$page = "wiki";
 $description = "Page Wiki";
-$keywords = "default";
+$keywords = "wiki";
 
 include("./scripts/functions.php");
 parametres($page,$description,$keywords);

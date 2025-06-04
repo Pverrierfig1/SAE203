@@ -1,7 +1,7 @@
 <?php
 $page = "Annuaire des clients";
-$description = "Annuaire client";
-$keywords  = "default";
+$description = "Annuaire des clients";
+$keywords  = "annuaire_client";
 
 include("./scripts/functions.php");
 
