@@ -98,7 +98,7 @@ if (window.location.pathname == "/SAE203/partage.php"){
 
 
 let sequence = ['z', 'd', 's', 'q'];
-let link = ["https://drive.google.com/file/d/1J_RzsOlgyiRmsL-KWKzuGgX7nIn4-KM_/view?usp=drive_link","https://drive.google.com/file/d/1jZVjssrsoTYcYIsOX3dSAeTapwmL7hGA/view?usp=drive_link"];
+let link = ["https://drive.google.com/file/d/1J_RzsOlgyiRmsL-KWKzuGgX7nIn4-KM_/view?usp=sharing","https://drive.google.com/file/d/1jZVjssrsoTYcYIsOX3dSAeTapwmL7hGA/view?usp=sharing"];
 let i = 0;
 
 function onEvent(event){
