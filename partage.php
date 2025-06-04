@@ -1,7 +1,7 @@
 <?php
 $page = "Page de partage";
-$description = "Page de partage";
-$keywords = "default";
+$description = "Page de partage, visualisation, suppression et téléchargement de fichier";
+$keywords = "suppresion_visualisation_téléchargement";
 
 include("./scripts/functions.php");
 

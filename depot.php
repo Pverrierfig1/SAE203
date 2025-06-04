@@ -1,7 +1,7 @@
 <?php
-$page = "acceuil.php";
-$description = "Page d'accueil";
-$keywords = "default";
+$page = "Page de dépôt";
+$description = "Page de dépôt qui permet la confirmation de suppression et le dépôt de fichier";
+$keywords = "dépôt_suppression";
 
 include("./scripts/functions.php");
 parametres($page,$description,$keywords);
