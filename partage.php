@@ -1,13 +1,7 @@
 <?php
-<<<<<<< HEAD
-$page = "Partage";
-$description = "Page de partage";
-$keywords = "partage";
-=======
 $page = "Page de partage";
 $description = "Page de partage, visualisation, suppression et téléchargement de fichier";
 $keywords = "suppresion_visualisation_téléchargement";
->>>>>>> page_ftp
 
 include("./scripts/functions.php");
 

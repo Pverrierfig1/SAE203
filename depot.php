@@ -1,13 +1,7 @@
 <?php
-<<<<<<< HEAD
-$page = "Dépot";
-$description = "Page dépot";
-$keywords = "dépot";
-=======
 $page = "Page de dépôt";
 $description = "Page de dépôt qui permet la confirmation de suppression et le dépôt de fichier";
 $keywords = "dépôt_suppression";
->>>>>>> page_ftp
 
 include("./scripts/functions.php");
 parametres($page,$description,$keywords);
