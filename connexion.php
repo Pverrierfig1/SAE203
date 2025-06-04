@@ -26,20 +26,24 @@ if (isset($_POST["username"])){
 }
 
 echo('
-<div class="container">
-<h2 class="mt-4">Connexion à l\'intranet</h2>
-<form action="#" method="POST">
-  <div class="mb-3 mt-3">
-    <label for="username" class="form-label">Pseudo</label>
-    <input type="text" class="form-control" id="email" placeholder="Entrez votre pseudo" name="username">
+<div class="container text-center mt-5 p-5">
+  <div class="card shadow p-4"">
+    <h2 class="card-title text-center mb-4">Connexion à l\'intranet</h2>
+    <form action="#" method="POST">
+      <div class="mb-3">
+        <label for="username" class="form-label">Pseudo</label>
+        <input type="text" class="form-control" id="username" placeholder="Entrez votre pseudo" name="username" required>
+      </div>
+      <div class="mb-3">
+        <label for="pwd" class="form-label">Mot de passe</label>
+        <input type="password" class="form-control" id="pwd" placeholder="Entrez votre mot de passe" name="pswd" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Connexion</button>
+    </form>
   </div>
-  <div class="mb-3">
-    <label for="pwd" class="form-label">Mot de passe :</label>
-    <input type="password" class="form-control" id="pwd" placeholder="Entrez votre mot de passe" name="pswd">
-  </div>
-  <button type="submit" class="btn btn-primary">Connexion</button>
-</form>
-</div>');
+</div>
+');
+
 
 pieddepage();
 ?>
