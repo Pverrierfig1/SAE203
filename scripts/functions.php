@@ -93,7 +93,8 @@ function navigation($page){
           <a class='nav-link " . ($page == 'Annuaire des fournisseur' ? 'active' : '') . "' href='./annuaire_fournisseurs.php'>Annuaires des fournisseurs</a>
         </li>");
         };
-        if (isset($_SESSION["username"])) {echo("<li class='nav-item'>
+        if (isset($_SESSION["username"])) {
+          echo("<li class='nav-item'>
             <a class='nav-link " . ($page == 'Annuaire des clients' ? 'active' : '') . "' href='./annuaire_client.php'>Annuaire des clients</a>
         </li>");
         };
@@ -102,14 +103,10 @@ function navigation($page){
           <a class='nav-link " . ($page == 'Gestion des fournisseurs' ? 'active' : '') . "' href='./gestion_fournisseur.php'>Gestion des fournisseurs</a>
         </li>");
         };
-        if (isset($_SESSION["username"])){
+        if (isset($_SESSION["username"]) && in_array("administrateur", $_SESSION['roles'])){
         echo("<li class='nav-item'>
           <a class='nav-link " . ($page == 'Gestion des utilisateurs' ? 'active' : '') . "' href='./gestion.php'>Gestion</a>
         </li>");
-        };
-        if (isset($_SESSION['roles']) && array_search("administrateur", $_SESSION['roles'])){echo("<li class='nav-item'>
-            <a class='nav-link " . ($page == 'Gestion' ? 'active' : '') . "' href='./gestion.php'>Gestion</a>
-          </li>");
         };
         echo("<li class='nav-item'>
             <a class='nav-link " . ($page == 'Wiki' ? 'active' : '') . "' href='./wiki.php'>Wiki</a>
