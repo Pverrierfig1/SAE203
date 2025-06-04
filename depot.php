@@ -1,5 +1,5 @@
 <?php
-$page = "Page de dépôt";
+$page = "Page de partage";
 $description = "Page de dépôt qui permet la confirmation de suppression et le dépôt de fichier";
 $keywords = "dépôt_suppression";
 
