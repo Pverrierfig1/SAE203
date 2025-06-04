@@ -51,7 +51,7 @@ function entete($titre){
           if (file_exists($search)){
             $pp = $search;
           }
-          echo("<a href='./modif_profil.php'><img src='".$pp."' alt='photo de profil utilisateur' width='100' class='rounded'></a>");
+          echo("<a href='./profil.php'><img src='".$pp."' alt='photo de profil utilisateur' width='100' class='rounded'></a>");
         };
         echo("
         </div>
