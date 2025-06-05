@@ -117,7 +117,7 @@ function onEvent(event){
             img.style.maxHeight = "80%";
             frame.appendChild(img);
             document.body.appendChild(frame);
-            let audio = new Audio("https://www.myinstants.com/media/sounds/dj-airhorn-sound-effect-kingbeatz_1.mp3");
+            let audio = new Audio("https://www.myinstants.com/media/sounds/shrek-rave_ps8NBE7.mp3");
   			audio.play();
 	    }
 	}else{
