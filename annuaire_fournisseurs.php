@@ -50,8 +50,8 @@ foreach ($fournisseurs as $id => $fournisseur) {
     echo "<td>";
 
     if ($est_admin) {
-        echo "<button class='btn btn-warning' type='submit' name='modification' value='$id'>Modifier</button> ";
-        echo "<button class='btn btn-danger' type='submit' name='suppression' value='$id'>Supprimer</button>";
+        echo "<button class='btn btn-warning' type='submit' name='modifier' value='$id'>Modifier</button> ";
+        echo "<button class='btn btn-danger' type='submit' name='supprimer' value='$id'>Supprimer</button>";
     } else {
         echo "-";
     }

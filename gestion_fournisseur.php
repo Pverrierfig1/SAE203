@@ -13,98 +13,116 @@ parametres($page, $description, $keywords);
 entete($page);
 navigation($page);
 
-// --- Création ou modification ---
+// Création ou modification
 if (isset($_POST["nom"])) {
-    $new_id = strtolower(str_replace(" ", "_", $_POST["nom"]));
-    $logo_name = "";
+    if (isset($_POST["id"])) {
+        $new_id = $_POST["id"];
+    } else {
+        $new_id = strtolower(str_replace(" ", "_", $_POST["nom"]));
+    }
 
-    // Gestion de l'upload si un fichier est fourni
+    // Gestion du logo uploadé
     if (isset($_FILES["logo"]) && $_FILES["logo"]["error"] === UPLOAD_ERR_OK) {
         $tmp_name = $_FILES["logo"]["tmp_name"];
-        $original_name = basename($_FILES["logo"]["name"]);
-        $extension = pathinfo($original_name, PATHINFO_EXTENSION);
+        $nom_origin = basename($_FILES["logo"]["name"]);
+        $extension = pathinfo($nom_origin, PATHINFO_EXTENSION);
 
-        // Sécurité : autoriser que les images
         $extensions_valides = ['jpg', 'jpeg', 'png'];
         if (in_array(strtolower($extension), $extensions_valides)) {
-            $logo_name = $new_id . '.' . $extension;
-            move_uploaded_file($tmp_name, $dossier_logo . $logo_name);
+            $n_logo = $new_id . '.' . $extension;
+            move_uploaded_file($tmp_name, $dossier_logo . $n_logo);
         } else {
-            alert("Extension de fichier non autorisée.");
-            $logo_name = "default_logo.jpg";
+            echo "<div class='alert alert-danger'>Extension de fichier non autorisée.</div>";
+            $n_logo = "default_logo.jpg";
         }
-    } else if (isset($_POST["id"]) && isset($data[$_POST["id"]])) {
-        // Cas modification sans nouveau logo : on garde l'ancien
-        $logo_name = $data[$_POST["id"]]["logo"];
+    } elseif (isset($_POST["id"]) && isset($data[$_POST["id"]])) {
+        // On garde l'ancien logo s'il n'y a pas eu de changement
+        $n_logo = $data[$_POST["id"]]["logo"];
     } else {
-        $logo_name = "default_logo.jpg";
+        $n_logo = "default_logo.jpg";
     }
 
-    // Suppression de l'ancien fournisseur si c'est une modif et ID a changé
-    if (isset($_POST["id"]) && $_POST["id"] !== $new_id) {
-        unset($data[$_POST["id"]]);
+    // Suppression de l'ancien fournisseur si ID changé
+    if (!empty($_POST["id"]) && $_POST["id"] !== $new_id) {
+    $old_id = $_POST["id"];
+    $old_logo = "";
+
+    if (isset($data[$old_id]["logo"])) {
+        $old_logo = $data[$old_id]["logo"];
     }
 
-    // Mise à jour ou ajout
+    if ($old_logo !== "default_logo.jpg" && file_exists($dossier_logo . $old_logo)) {
+        unlink($dossier_logo . $old_logo);
+    }
+
+    unset($data[$old_id]);
+}
+
+    // Enregistrement des données mises à jour
     $data[$new_id] = [
         "nom" => $_POST["nom"],
         "description" => $_POST["description"],
-        "logo" => $logo_name
+        "logo" => $n_logo
     ];
 
-    if (file_put_contents($fichier_fournisseurs, json_encode($data))) {
-        echo '<div class="alert alert-success container mt-4">Fournisseur enregistré avec succès !</div>';
-        header("Location: annuaire_fournisseurs.php");
-    } else {
-        alert("<strong>Erreur !</strong> Impossible d'enregistrer le fournisseur.");
-    }
+    file_put_contents($fichier_fournisseurs, json_encode($data, JSON_PRETTY_PRINT));
+    header("Location: annuaire_partenaire.php");
+    exit;
 }
 
-// --- Formulaire de modification ---
-elseif (isset($_POST["modifier"])) {
-    $id = $_POST["modifier"];
-    $fournisseur = $data[$id];
-
-    echo '<div class="container mt-4">
-            <h2>Modification du fournisseur</h2>
-            <form method="POST" enctype="multipart/form-data" action="#">
-                <input type="hidden" name="id" value="'.htmlspecialchars($id).'">
-                <div class="mb-3">
-                    <label class="form-label">Nom</label>
-                    <input type="text" class="form-control" name="nom" value="'.htmlspecialchars($fournisseur['nom']).'" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Description</label>
-                    <textarea class="form-control" name="description" required>'.htmlspecialchars($fournisseur['description']).'</textarea>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Changer le logo (optionnel)</label>
-                    <input type="file" class="form-control" name="logo" accept="image/*">
-                </div>
-                <button type="submit" class="btn btn-primary">Valider la modification</button>
-            </form>
-        </div>';
-}
-
-// --- Suppression ---
+// gestion de la suppression
 elseif (isset($_POST["supprimer"])) {
     $id = $_POST["supprimer"];
     if (isset($data[$id])) {
+        // Supprimer le logo du fournisseur sauf s'il est "default_logo.jpg"
+        $logo = $data[$id]["logo"];
+        if ($logo !== "default_logo.jpg" && file_exists($dossier_logo . $logo)) {
+            unlink($dossier_logo . $logo);
+        }
+
         unset($data[$id]);
-        file_put_contents($fichier_fournisseurs, json_encode($data));
-        echo '<div class="alert alert-success container mt-4">Fournisseur supprimé avec succès.</div>';
-        header("Location: annuaire_fournisseurs.php");
-        exit;
+        file_put_contents($fichier_fournisseurs, json_encode($data, JSON_PRETTY_PRINT));
+    }
+    header("Location: annuaire_partenaire.php");
+    exit;
+}
+
+// Formulaire de modification 
+elseif (isset($_POST["modifier"])) {
+    $id = $_POST["modifier"];
+
+    if (isset($data[$id])) {
+        $fournisseur = $data[$id];
+
+        echo '<div class="container mt-4">
+                <h2>Modification du fournisseur</h2>
+                <form method="POST" enctype="multipart/form-data" action="gestion_fournisseur.php">
+                    <input type="hidden" name="id" value="'.htmlspecialchars($id).'">
+                    <div class="mb-3">
+                        <label class="form-label">Nom</label>
+                        <input type="text" class="form-control" name="nom" value="'.htmlspecialchars($fournisseur['nom']).'" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" name="description" required>'.htmlspecialchars($fournisseur['description']).'</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Changer le logo</label>
+                        <input type="file" class="form-control" name="logo" accept="image/*">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Valider la modification</button>
+                </form>
+            </div>';
     } else {
-        alert("<strong>Erreur !</strong> Le fournisseur n'existe pas.");
+        echo "<div class='alert alert-danger'>Fournisseur introuvable.</div>";
     }
 }
 
-// --- Formulaire d'ajout ---
+// Formulaire d'ajout 
 elseif (isset($_POST["ajouter"])) {
     echo '<div class="container mt-4">
             <h2>Ajouter un nouveau fournisseur</h2>
-            <form method="POST" enctype="multipart/form-data" action="#">
+            <form method="POST" enctype="multipart/form-data" action="gestion_fournisseur.php">
                 <div class="mb-3">
                     <label class="form-label">Nom</label>
                     <input type="text" class="form-control" name="nom" required>
@@ -118,34 +136,6 @@ elseif (isset($_POST["ajouter"])) {
                     <input type="file" class="form-control" name="logo" accept="image/*" required>
                 </div>
                 <button type="submit" class="btn btn-success">Créer le fournisseur</button>
-            </form>
-        </div>';
-}
-
-// --- Liste des fournisseurs ---
-else {
-    echo '<div class="container mt-4">
-            <h1>Gestion des fournisseurs partenaires</h1>
-            <form method="POST" action="#">
-                <button type="submit" name="ajouter" class="btn btn-success mb-3">Ajouter un fournisseur</button>
-                <table class="table table-striped">
-                    <thead><tr><th>Logo</th><th>Nom</th><th>Description</th><th>Actions</th></tr></thead> ';
-    foreach ($data as $id => $fournisseur) {
-        $logo = $dossier_logo . $fournisseur['logo'];
-        if (!file_exists($logo)) {
-            $logo = $dossier_logo . 'default_logo.jpg';
-        }
-        echo '<tr>
-                <td><img src="'.$logo.'" alt="Logo '.$fournisseur['nom'].'" width="80"></td>
-                <td>'.htmlspecialchars($fournisseur['nom']).'</td>
-                <td>'.htmlspecialchars($fournisseur['description']).'</td>
-                <td>
-                    <button class="btn btn-warning" type="submit" name="modifier" value="'.$id.'">Modifier</button>
-                    <button class="btn btn-danger" type="submit" name="supprimer" value="'.$id.'">Supprimer</button>
-                </td>
-              </tr>';
-    }
-    echo '     </table>
             </form>
         </div>';
 }
