@@ -41,7 +41,8 @@ navigation($page);
 
       foreach($uploads as $user=>$fichiers) {
       	foreach($fichiers as $fichier=>$vals){
-      		$chemin = "./data/users/".$user."/".$fichier;
+      		if (array_intersect($_SESSION["roles"], $vals["roles"])){
+      			$chemin = "./data/users/".$user."/".$fichier;
 							echo('
 							<tr>
 							  <td>'.$fichier.'</td>
@@ -63,6 +64,7 @@ navigation($page);
 							  <td>'.$vals['commentaires'].'</td>
 							</tr>
 							');// l'attribute data-bs-target est pour boostrap afin qu'il affiche en model la frame avec l'id de l'attribute. L'attribute data-file est pour le js afin qu'il affiche dans l'iframe le doc.
+      		}
       	} // implode retire les characteres donnée
       }
 
