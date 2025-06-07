@@ -1,7 +1,24 @@
 <?php
 $page = "Gestion des utilisateurs";
 $description = "Page de gestion";
-$keywords = "default";
+$keywords = "gestion";
+
+$roles = ["Administrateur", "Manager", "Direction", "Salarié"];
+
+function deleteFolder($folder) {
+    foreach (scandir($folder) as $child) {
+        if ($child != "." && $child != "..") {
+	        $path = $folder."/".$child;
+
+	        if (is_dir($child)) {
+	            deleteFolder($path);
+	        } else {
+	            unlink($path);
+	        }
+        }
+    }
+    rmdir($folder);
+}
 
 function deleteFolder($folder) {
     foreach (scandir($folder) as $child) {
@@ -76,6 +93,7 @@ elseif(isset($_POST["ajouter"])){ //affichage de l'inscription de l'utilisateur
     <div class="mb-3">
       <label for="email" class="form-label">Entrez l\'e-mail de l\'utilisateur</label>
       <input type="email" class="form-control" id="email" placeholder="Entez un e-mail" name="email" required>
+<<<<<<< HEAD
     </div>
     <div class="form-check">
         <h2>Séléctionnez les rôle de l\'utilisateur</h2>
@@ -94,6 +112,21 @@ elseif(isset($_POST["ajouter"])){ //affichage de l'inscription de l'utilisateur
         <input type="checkbox" class="form-check-input" id="check2" name="roles[]" value="salarie" checked>
         <label class="form-check-label" for="check2">Salarié</label>
     </div>
+=======
+    </div>');
+    foreach($roles as $role){
+      $checked = "";
+      if ($role == "Salarié"){
+        $checked = "checked";
+      }
+         echo ('
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="'.$role.'" name="roles[]" value="'.$role.'" '.$checked.'>
+            <label class="form-check-label" for="'.$role.'">'.$role.'</label>
+          </div>');
+         }
+  echo('
+>>>>>>> 0a19149e01dc54b5ea917a2b2b3350028fb48154
     <div class="mb-3 mt-3">
       <label for="password" class="form-label">Entrez le mot de passe de l\'utilisateur</label>
       <input type="password" class="form-control" id="password" placeholder="Entez un mot de passe" name="password" required>
@@ -104,8 +137,62 @@ elseif(isset($_POST["ajouter"])){ //affichage de l'inscription de l'utilisateur
   ');
 
 }
+<<<<<<< HEAD
 elseif(isset($_POST["modification"])){ //
 
+=======
+elseif(isset($_POST["modification"])){ // Modificication de l'utilisateur
+    $username = $_POST["modification"];
+
+    if (!isset($data[$username])) {
+         alert("<strong>Erreur !</strong> L'utilisateur n'existe pas...");
+    } else {
+        $user = $data[$username];
+
+        echo('
+        <div class="container">
+            <h1 class="mt-4">Modification de l\'utilisateur '.$user["prenom"].' '.$user["nom"].'</h1>
+            <form method="POST" action="#">
+               <input type="hidden" name="username" value="'.$username.'">
+                <div class="mb-3">
+                    <label class="form-label">Nom</label>
+                    <input type="text" class="form-control" value="'.htmlspecialchars($user["nom"]).'" disabled>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Prénom</label>
+                    <input type="text" class="form-control" value="'.htmlspecialchars($user["prenom"]).'" disabled>
+                </div>
+
+                <div class="mb-3">
+                    <label for="tel" class="form-label">Téléphone</label>
+                    <input type="tel" class="form-control" id="tel" name="tel" value="'.htmlspecialchars($user["telephone"]).'" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="email" class="form-control" id="email" name="email" value="'.htmlspecialchars($user["email"]).'" required>
+                </div>');
+                  foreach($roles as $role){
+                      $checked = "";
+                      if (in_array($role, $user["roles"])){
+                        $checked = "checked";
+                      }
+                      echo ('
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="'.$role.'" name="roles[]" value="'.$role.'" '.$checked.'>
+                        <label class="form-check-label" for="'.$role.'">'.$role.'</label>
+                      </div>');
+                  }
+              echo('
+                    <div class="mt-4">
+                      <button type="submit" class="btn btn-primary" name="valider_modification">Modifier</button>
+                      <a href="./gestion.php" class="btn btn-secondary">Annuler</a>
+                    </div>
+            </form>
+        </div>');
+
+    }
+>>>>>>> 0a19149e01dc54b5ea917a2b2b3350028fb48154
 }
 elseif(isset($_POST["suppression"])){ // On supprime les donnnées de l'utilisateur, image, les upload, ect
   $prenom = $data[$_POST["suppression"]]["prenom"];
@@ -124,6 +211,25 @@ elseif(isset($_POST["suppression"])){ // On supprime les donnnées de l'utilisat
           <p>L\'utilisateur <strong>'.$prenom.' '.$nom.'</strong> à été supprimé</p>
     </div>');
 }
+<<<<<<< HEAD
+=======
+elseif (isset($_POST["valider_modification"])){
+    $username = $_POST["username"];
+    $data[$username]["telephone"] = $_POST["tel"];
+    $data[$username]["email"] = $_POST["email"];
+    $data[$username]["roles"] = $_POST["roles"];
+
+    $result = file_put_contents("./data/utilisateurs.json", json_encode($data));
+    if ($result === false) {
+      alert("<strong>Erreur !</strong> Les modifications n'ont pas été enregistrées.");
+    } else {
+      echo('
+        <div class="alert alert-success mt-5 container">
+          <strong>Utilisateur modifié avec succès !</strong>
+        </div>');
+    }
+}
+>>>>>>> 0a19149e01dc54b5ea917a2b2b3350028fb48154
 else{
   $file = file("./data/client.csv",FILE_SKIP_EMPTY_LINES);
   echo('

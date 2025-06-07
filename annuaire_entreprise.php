@@ -1,7 +1,13 @@
 <?php
+<<<<<<< HEAD
 $page = "annuaire_entreprise.php";
 $description = "Page annuaire de l'entreprise";
 $keywords = "nom, prénom, fonction, photo, bio";
+=======
+$page = "Annuaire de l'entreprise";
+$description = "Page annuaire de l'entreprise";
+$keywords = "annuaire_entreprise";
+>>>>>>> 0a19149e01dc54b5ea917a2b2b3350028fb48154
 include("./scripts/functions.php");
 parametres($page,$description,$keywords);
 entete($page);
@@ -20,10 +26,17 @@ if (isset($liste_util[$login]['roles'])) {
 }
 
 $est_admin = false;
+<<<<<<< HEAD
 if (in_array('administrateur', $roles_connecte)) {
     $est_admin = true;
 }
 echo "<div class='container-fluid ml-5 mr-5' >";
+=======
+if (in_array('Administrateur', $roles_connecte)) {
+    $est_admin = true;
+}
+echo "<div class='container ml-5 mr-5' >";
+>>>>>>> 0a19149e01dc54b5ea917a2b2b3350028fb48154
 echo "<h1> 📖 Annuaire de l'entreprise </h1> ";
 echo "<br>";
 echo "<form method='POST' action='gestion.php'>";
@@ -60,18 +73,27 @@ foreach ($liste_util as $identifiant => $user) {  // $identifiant = clé (ex: je
 
     // Si l'utilisateur est normal
     else {
+<<<<<<< HEAD
         if ($identifiant == $login) {
             echo "<button class='btn btn-warning' type='submit' name='modification' value='$identifiant'>Modifier mon profil</button>";
         } else {
             echo "-";
         }
+=======
+     echo "-";
+>>>>>>> 0a19149e01dc54b5ea917a2b2b3350028fb48154
     }
     echo "</td>";
     echo "</tr>";
     
 }
 echo "</table>";
+<<<<<<< HEAD
 echo "</form>";
+=======
+echo "</form>
+</div>";
+>>>>>>> 0a19149e01dc54b5ea917a2b2b3350028fb48154
 
 pieddepage();
 ?>
