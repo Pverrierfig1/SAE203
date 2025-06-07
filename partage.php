@@ -26,9 +26,12 @@ navigation($page);
       <thead class="table-info">
         <tr>
           <th>Nom du fichier</th>
+          <th>Propriétaire</th>
           <th>Taille</th>
           <th>Date de dépôt</th>
+          <th>Partagé avec</th>
           <th>Actions</th>
+          <th>Commentaires</th>
         </tr>
       </thead>
       <tbody>
@@ -41,20 +44,24 @@ navigation($page);
       			if ($fichier != "." && $fichier != "..") {
       				$chemin = "./data/users/".$dossier."/".$fichier;
       				$taille = filesize($chemin);
-      				echo('
-			      	<tr>
-			          <td>'.$fichier.'</td>
-			          <td>'.round($taille/1024/1024, 2).' Mo</td>
-			          <td>'.date ("d/m/Y H:i", filemtime($chemin)).'</td>
-			          <td>
-			            <button class="btn btn-sm btn-outline-secondary voir" data-bs-toggle="modal" data-bs-target="#visualiseur" data-file="'.$chemin.'">👁️ Consulter</button>
-			            <a href="'.$chemin.'" class="btn btn-sm btn-primary" download>📥 Télécharger</a>
-			            <form action="./depot.php" method="POST">
-			            	<input type="hidden" name="nomfichier" value="'.$fichier.'">
-			            	<button type="submit" name="bouton_suppression" class="btn btn-sm btn-danger suppression" value="'.$chemin.'">🗑️ Supprimer</button>
-			            </form>
-			          </td>
-			        </tr>');
+							echo('
+							<tr>
+							  <td>'.$fichier.'</td>
+							  <td>'.round($taille/1024/1024, 2).' Mo</td>
+							  <td>'.date ("d/m/Y H:i", filemtime($chemin)).'</td>
+							  <td>
+							    <button class="btn btn-sm btn-outline-secondary me-2 voir" data-bs-toggle="modal" data-bs-target="#visualiseur" data-file="'.$chemin.'">👁️ Consulter</button>
+							    
+							    <a href="'.$chemin.'" class="btn btn-sm btn-primary me-2" download>📥 Télécharger</a>
+							    
+							    <form action="./depot.php" method="POST">
+							      <input type="hidden" name="nomfichier" value="'.$fichier.'">
+							      <button type="submit" class="btn btn-sm btn-warning me-2 modifier mt-3">✏️ Modifier</button>
+							      <button type="submit" name="bouton_suppression" class="btn btn-sm me-2 btn-danger mt-3">🗑️ Supprimer</button>
+							    </form>
+							  </td>
+							</tr>
+							');
       			}// l'attribute data-bs-target est pour boostrap afin qu'il affiche en model la frame avec l'id de l'attribute. L'attribute data-file est pour le js afin qu'il affiche dans l'iframe le doc.
       		}
       	}
