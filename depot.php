@@ -35,11 +35,19 @@ if (isset($_POST['bouton_annul'])){
 };
 
 if (isset($_FILES["fichier"]) && $_FILES["fichier"]["error"] === UPLOAD_ERR_OK) {
-	$path = "./data/users/".$_SESSION["username"];
+  $username = $_SESSION["username"];
+	$path = "./data/users/".$username;
 	if (!is_dir($path)){
 		mkdir($path); // on crée un dossier du nom de l'utilisateur si il n'existe pas
 	}
 	move_uploaded_file($_FILES["fichier"]["tmp_name"], $path."/".$_FILES["fichier"]["name"]); // on met dans le dossier de l'utilisateur le fichier temp
+  $uploads = json_decode(file_get_contents("./data/uploads.json"),true);
+  $allowed = $_SESSION["roles"];
+  if (isset($_POST["roles"])){
+    array_merge($allowed, $_POST["roles"]); //En disabled, php ne met pas dans POST la valeur... il faut donc ajouter manuellement.
+  }
+  $uploads[$username][$_FILES["fichier"]["name"]] = array("roles"=>$allowed,"commentaires"=>$_POST["commentaires"]);
+  file_put_contents("./data/uploads.json", json_encode($uploads));
 }
 echo('
 <div class="container">
@@ -59,13 +67,15 @@ foreach ($roles as $role) {
 
     echo ('
     <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="'.$role.'" name="'.$role.'" value="'.$role.'" '.$infos.'>
+    <input type="checkbox" class="form-check-input" id="'.$role.'" name="roles[]" value="'.$role.'" '.$infos.'>
     <label for="'.$role.'" class="form-check-label"> '.$role.'</label><br>
     </div>');
 }
 
 echo '
-    <button type="submit" class="btn btn-primary mt-3">Envoyer</button>
+    <label for="comment" class="mt-4">Commentaires :</label>
+    <textarea class="form-control" id="comment" name="commentaires"></textarea>
+    <button type="submit" class="btn btn-success mt-3">Envoyer</button>
   </form>
 </div>';
 
