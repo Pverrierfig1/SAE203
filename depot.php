@@ -2,6 +2,7 @@
 $page = "Page de partage";
 $description = "Page de dépôt qui permet la confirmation de suppression et le dépôt de fichier";
 $keywords = "dépôt_suppression";
+$roles = ["Administrateur", "Manager", "Direction", "Salarié"];
 
 include("./scripts/functions.php");
 parametres($page,$description,$keywords);
@@ -42,28 +43,31 @@ if (isset($_FILES["fichier"]) && $_FILES["fichier"]["error"] === UPLOAD_ERR_OK) 
 }
 echo('
 <div class="container">
-    <h2 class="mt-3">Déposer un fichier</h2>
+  <h2 class="mt-3">Déposer un fichier</h2>
 
-    <form action="#" method="POST" enctype="multipart/form-data">
-      <div class="mb-4 mt-4">
-        <label for="file" class="form-label">Choisissez un fichier</label>
-        <input class="form-control" type="file" id="file" name="fichier">
-      </div>
-      <h3> Partager mon fichier avec :</h3>
-      <input type="checkbox" id="Salarié" name="Salarié" value="Salarié" '. (array_search("admin", $_SESSION['roles']) == 1 ? "checked disabled" : "") .'>
-      <label for="Salarié"> Salarié</label><br>
-      <input type="checkbox" id="Managers" name="Managers" value="Managers">
-      <label for="Managers"> Managers</label><br>
-      <input type="checkbox" id="Direction" name="Direction" value="Direction">
-      <label for="Direction"> Direction</label><br>
-      <input type="checkbox" id="Admin" name="Admin" value="Admin">
-      <label for="Admin"> Admin</label><br>
-      <button type="submit" class="btn btn-primary mt-3">Envoyer</button>
-    </form>
-  </div>');
-print_r(array_search("admin", $_SESSION['roles']));
-echo("<br>");
-print_r($_SESSION['roles']);
+  <form action="#" method="POST" enctype="multipart/form-data">
+    <div class="mb-4 mt-4">
+      <label for="file" class="form-label">Choisissez un fichier</label>
+      <input class="form-control" type="file" id="file" name="fichier">
+    </div>
+    <h3>Partager mon fichier avec :</h3>
+');
+
+foreach ($roles as $role) {
+    
+    $infos = in_array($role, $_SESSION['roles']) ? 'checked disabled' : '';
+
+    echo ('
+    <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="'.$role.'" name="'.$role.'" value="'.$role.'" '.$infos.'>
+    <label for="'.$role.'" class="form-check-label"> '.$role.'</label><br>
+    </div>');
+}
+
+echo '
+    <button type="submit" class="btn btn-primary mt-3">Envoyer</button>
+  </form>
+</div>';
 
 pieddepage();
 ?>
