@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
-$page = "Page de dépôt";
-=======
 $page = "Page de partage";
->>>>>>> 0a19149e01dc54b5ea917a2b2b3350028fb48154
 $description = "Page de dépôt qui permet la confirmation de suppression et le dépôt de fichier";
 $keywords = "dépôt_suppression";
 

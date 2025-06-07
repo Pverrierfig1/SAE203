@@ -20,21 +20,6 @@ function deleteFolder($folder) {
     rmdir($folder);
 }
 
-function deleteFolder($folder) {
-    foreach (scandir($folder) as $child) {
-        if ($child != "." && $child != "..") {
-	        $path = $folder."/".$child;
-
-	        if (is_dir($child)) {
-	            deleteFolder($path);
-	        } else {
-	            unlink($path);
-	        }
-        }
-    }
-    rmdir($folder);
-}
-
 include("./scripts/functions.php");
 
 $data = json_decode(file_get_contents("./data/utilisateurs.json"),true);
@@ -93,26 +78,6 @@ elseif(isset($_POST["ajouter"])){ //affichage de l'inscription de l'utilisateur
     <div class="mb-3">
       <label for="email" class="form-label">Entrez l\'e-mail de l\'utilisateur</label>
       <input type="email" class="form-control" id="email" placeholder="Entez un e-mail" name="email" required>
-<<<<<<< HEAD
-    </div>
-    <div class="form-check">
-        <h2>Séléctionnez les rôle de l\'utilisateur</h2>
-        <input type="checkbox" class="form-check-input" id="check1" name="roles[]" value="administrateur">
-        <label class="form-check-label" for="check1">Administrateur</label>
-    </div>
-    <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="check3" name="roles[]" value="manager">
-        <label class="form-check-label" for="check3">Manager</label>
-    </div>
-    <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="check4" name="roles[]" value="direction">
-        <label class="form-check-label" for="check4">Direction</label>
-    </div>
-    <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="check2" name="roles[]" value="salarie" checked>
-        <label class="form-check-label" for="check2">Salarié</label>
-    </div>
-=======
     </div>');
     foreach($roles as $role){
       $checked = "";
@@ -126,7 +91,6 @@ elseif(isset($_POST["ajouter"])){ //affichage de l'inscription de l'utilisateur
           </div>');
          }
   echo('
->>>>>>> 0a19149e01dc54b5ea917a2b2b3350028fb48154
     <div class="mb-3 mt-3">
       <label for="password" class="form-label">Entrez le mot de passe de l\'utilisateur</label>
       <input type="password" class="form-control" id="password" placeholder="Entez un mot de passe" name="password" required>
@@ -137,10 +101,6 @@ elseif(isset($_POST["ajouter"])){ //affichage de l'inscription de l'utilisateur
   ');
 
 }
-<<<<<<< HEAD
-elseif(isset($_POST["modification"])){ //
-
-=======
 elseif(isset($_POST["modification"])){ // Modificication de l'utilisateur
     $username = $_POST["modification"];
 
@@ -192,7 +152,6 @@ elseif(isset($_POST["modification"])){ // Modificication de l'utilisateur
         </div>');
 
     }
->>>>>>> 0a19149e01dc54b5ea917a2b2b3350028fb48154
 }
 elseif(isset($_POST["suppression"])){ // On supprime les donnnées de l'utilisateur, image, les upload, ect
   $prenom = $data[$_POST["suppression"]]["prenom"];
@@ -211,8 +170,6 @@ elseif(isset($_POST["suppression"])){ // On supprime les donnnées de l'utilisat
           <p>L\'utilisateur <strong>'.$prenom.' '.$nom.'</strong> à été supprimé</p>
     </div>');
 }
-<<<<<<< HEAD
-=======
 elseif (isset($_POST["valider_modification"])){
     $username = $_POST["username"];
     $data[$username]["telephone"] = $_POST["tel"];
@@ -229,7 +186,6 @@ elseif (isset($_POST["valider_modification"])){
         </div>');
     }
 }
->>>>>>> 0a19149e01dc54b5ea917a2b2b3350028fb48154
 else{
   $file = file("./data/client.csv",FILE_SKIP_EMPTY_LINES);
   echo('

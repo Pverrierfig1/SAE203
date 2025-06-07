@@ -51,11 +51,7 @@ function entete($titre){
           if (file_exists($search)){
             $pp = $search;
           }
-<<<<<<< HEAD
-          echo("<a href='./modif_profil.php'><img src='".$pp."' alt='photo de profil utilisateur' width='100' class='rounded'></a>");
-=======
           echo("<a href='./profil.php'><img src='".$pp."' alt='photo de profil utilisateur' width='100' class='rounded'></a>");
->>>>>>> 0a19149e01dc54b5ea917a2b2b3350028fb48154
         };
         echo("
         </div>
@@ -76,19 +72,11 @@ function navigation($page){
     <div class='collapse navbar-collapse justify-content-center' id='navbarNav'>
       <ul class='navbar-nav'>
         <li class='nav-item'>
-<<<<<<< HEAD
-          <a class='nav-link " . ($page == 'accueil' ? 'active' : '') . "' href='./accueil.php'>Accueil</a>
-        </li>");
-        if (isset($_SESSION["username"])){
-        echo("<li class='nav-item dropdown'>
-          <a class='nav-link " . ($page == 'Qui' ? 'active' : '') . " dropdown-toggle' href='#' role='button' data-bs-toggle='dropdown'>Gestionnaire de fichiers</a>
-=======
           <a class='nav-link " . ($page == 'Acceuil' ? 'active' : '') . "' href='./accueil.php'>Accueil</a>
         </li>");
         if (isset($_SESSION["username"])){
         echo("<li class='nav-item dropdown'>
           <a class='nav-link " . ($page == 'Page de partage' ? 'active' : '') . " dropdown-toggle' href='#' role='button' data-bs-toggle='dropdown'>Gestionnaire de fichiers</a>
->>>>>>> 0a19149e01dc54b5ea917a2b2b3350028fb48154
           <ul class='dropdown-menu'>
             <li><a class='dropdown-item' href='./partage.php'>Visualisation</a></li>
             <li><a class='dropdown-item' href='./depot.php'>Modification</a></li>
@@ -97,28 +85,11 @@ function navigation($page){
         };
         if (isset($_SESSION["username"])){
         echo("<li class='nav-item'>
-<<<<<<< HEAD
-          <a class='nav-link " . ($page == 'annuaire_entreprise.php' ? 'active' : '') . "' href='./annuaire_entreprise.php'>Annuaire entreprise</a>
-=======
           <a class='nav-link " . ($page == "Annuaire de l'entreprise" ? 'active' : '') . "' href='./annuaire_entreprise.php'>Annuaire entreprise</a>
->>>>>>> 0a19149e01dc54b5ea917a2b2b3350028fb48154
         </li>");
         };
         if (isset($_SESSION["username"])){
         echo("<li class='nav-item'>
-<<<<<<< HEAD
-          <a class='nav-link " . ($page == 'Activités' ? 'active' : '') . "' href='./annuaire_fournisseurs.php'>Annuaires des fournisseurs partenaires</a>
-        </li>");
-        };
-        if (isset($_SESSION["username"])) {echo("<li class='nav-item'>
-            <a class='nav-link " . ($page == 'Annuaire des clients' ? 'active' : '') . "' href='./annuaire_client.php'>Annuaire des clients</a>
-        </li>");
-        };
-        if (admin() !== false) {echo("<li class='nav-item'>
-            <a class='nav-link " . ($page == 'wiki' ? 'active' : '') . "' href='./wiki.php'>Wiki</a>
-          </li>");
-        };
-=======
           <a class='nav-link " . ($page == 'Annuaire des fournisseur' ? 'active' : '') . "' href='./annuaire_fournisseurs.php'>Annuaires des fournisseurs</a>
         </li>");
         };
@@ -140,7 +111,6 @@ function navigation($page){
         echo("<li class='nav-item'>
             <a class='nav-link " . ($page == 'Wiki' ? 'active' : '') . "' href='./wiki.php'>Wiki</a>
           </li>");
->>>>>>> 0a19149e01dc54b5ea917a2b2b3350028fb48154
         echo("
       </ul>
     </div>

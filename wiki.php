@@ -1,13 +1,7 @@
 <?php
-<<<<<<< HEAD
-$page = "wiki.php";
-$description = "Page Wiki";
-$keywords = "default";
-=======
 $page = "Wiki";
 $description = "Page Wiki";
 $keywords = "wiki";
->>>>>>> 0a19149e01dc54b5ea917a2b2b3350028fb48154
 
 include("./scripts/functions.php");
 parametres($page,$description,$keywords);
@@ -15,14 +9,6 @@ parametres($page,$description,$keywords);
 entete($page);
 
 navigation($page);
-<<<<<<< HEAD
-
-?>
-
-<div class="text-center">
-	<h1>Page Wiki</h1>
-	<p>Dans cette page se trouve toutes les ressources et techniques utilisées pour concevoir le site</p>
-=======
 ?>
 
 <div class="container">
@@ -111,13 +97,8 @@ navigation($page);
             </ul>
         </div>
     </div>
->>>>>>> 0a19149e01dc54b5ea917a2b2b3350028fb48154
 </div>
 
 <?php
 pieddepage();
-<<<<<<< HEAD
 ?>
-=======
-?>
->>>>>>> 0a19149e01dc54b5ea917a2b2b3350028fb48154
