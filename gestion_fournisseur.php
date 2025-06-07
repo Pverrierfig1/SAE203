@@ -5,6 +5,7 @@ $keywords = "fournisseurs";
 
 include("./scripts/functions.php");
 
+// Chargement des données des fournisseurs
 $data = json_decode(file_get_contents("./data/fournisseurs.json"), true);
 $fichier_fournisseurs = "./data/fournisseurs.json";
 $dossier_logo = "./images/logo/";
@@ -13,8 +14,9 @@ parametres($page, $description, $keywords);
 entete($page);
 navigation($page);
 
-// --- Création ou modification ---
+//Traitement création ou modification d'un fournisseur
 if (isset($_POST["nom"])) {
+    // Création d'un identifiant à partir du nom
     $new_id = strtolower(str_replace(" ", "_", $_POST["nom"]));
     $logo_name = "";
 
@@ -24,7 +26,7 @@ if (isset($_POST["nom"])) {
         $original_name = basename($_FILES["logo"]["name"]);
         $extension = pathinfo($original_name, PATHINFO_EXTENSION);
 
-        // Sécurité : autoriser que les images
+        // Vérification du type de fichier upload
         $extensions_valides = ['jpg', 'jpeg', 'png'];
         if (in_array(strtolower($extension), $extensions_valides)) {
             $logo_name = $new_id . '.' . $extension;
@@ -34,7 +36,7 @@ if (isset($_POST["nom"])) {
             $logo_name = "default_logo.jpg";
         }
     } else if (isset($_POST["id"]) && isset($data[$_POST["id"]])) {
-        // Cas modification sans nouveau logo : on garde l'ancien
+        //modification sans nouveau logo on garde l'ancien
         $logo_name = $data[$_POST["id"]]["logo"];
     } else {
         $logo_name = "default_logo.jpg";
@@ -45,13 +47,14 @@ if (isset($_POST["nom"])) {
         unset($data[$_POST["id"]]);
     }
 
-    // Mise à jour ou ajout
+    // Mise à jour ou ajout dans le tableau des fournisseurs
     $data[$new_id] = [
         "nom" => $_POST["nom"],
         "description" => $_POST["description"],
         "logo" => $logo_name
     ];
 
+    // Enregistrement des données dans le fichier JSON
     if (file_put_contents($fichier_fournisseurs, json_encode($data))) {
         echo '<div class="alert alert-success container mt-4">Fournisseur enregistré avec succès !</div>';
         header("Location: annuaire_fournisseurs.php");
@@ -60,11 +63,12 @@ if (isset($_POST["nom"])) {
     }
 }
 
-// --- Formulaire de modification ---
+// Formulaire de modification
 elseif (isset($_POST["modifier"])) {
     $id = $_POST["modifier"];
     $fournisseur = $data[$id];
 
+    // Affichage du formulaire pré-rempli pour la modification
     echo '<div class="container mt-4">
             <h2>Modification du fournisseur</h2>
             <form method="POST" enctype="multipart/form-data" action="#">
@@ -86,11 +90,11 @@ elseif (isset($_POST["modifier"])) {
         </div>';
 }
 
-// --- Suppression ---
+// Si on supprime
 elseif (isset($_POST["supprimer"])) {
     $id = $_POST["supprimer"];
     if (isset($data[$id])) {
-        unset($data[$id]);
+        unset($data[$id]); // Suppression dans le tableau
         file_put_contents($fichier_fournisseurs, json_encode($data));
         echo '<div class="alert alert-success container mt-4">Fournisseur supprimé avec succès.</div>';
         header("Location: annuaire_fournisseurs.php");
@@ -100,7 +104,7 @@ elseif (isset($_POST["supprimer"])) {
     }
 }
 
-// --- Formulaire d'ajout ---
+//Formulaire d'ajout
 elseif (isset($_POST["ajouter"])) {
     echo '<div class="container mt-4">
             <h2>Ajouter un nouveau fournisseur</h2>
@@ -122,7 +126,7 @@ elseif (isset($_POST["ajouter"])) {
         </div>';
 }
 
-// --- Liste des fournisseurs ---
+//Liste des fournisseurs
 else {
     echo '<div class="container mt-4">
             <h1>Gestion des fournisseurs partenaires</h1>
