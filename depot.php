@@ -49,9 +49,21 @@ echo('
         <label for="file" class="form-label">Choisissez un fichier</label>
         <input class="form-control" type="file" id="file" name="fichier">
       </div>
-      <button type="submit" class="btn btn-primary">Envoyer</button>
+      <h3> Partager mon fichier avec :</h3>
+      <input type="checkbox" id="Salarié" name="Salarié" value="Salarié" '. (array_search("admin", $_SESSION['roles']) == 1 ? "checked disabled" : "") .'>
+      <label for="Salarié"> Salarié</label><br>
+      <input type="checkbox" id="Managers" name="Managers" value="Managers">
+      <label for="Managers"> Managers</label><br>
+      <input type="checkbox" id="Direction" name="Direction" value="Direction">
+      <label for="Direction"> Direction</label><br>
+      <input type="checkbox" id="Admin" name="Admin" value="Admin">
+      <label for="Admin"> Admin</label><br>
+      <button type="submit" class="btn btn-primary mt-3">Envoyer</button>
     </form>
   </div>');
+print_r(array_search("admin", $_SESSION['roles']));
+echo("<br>");
+print_r($_SESSION['roles']);
 
 pieddepage();
 ?>

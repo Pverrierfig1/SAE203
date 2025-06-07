@@ -51,7 +51,7 @@ navigation($page);
 			            <a href="'.$chemin.'" class="btn btn-sm btn-primary" download>📥 Télécharger</a>
 			            <form action="./depot.php" method="POST">
 			            	<input type="hidden" name="nomfichier" value="'.$fichier.'">
-			            	<button type="submit" name="bouton_suppression" class="btn btn-sm btn-danger suppression" value="'.$chemin.'">🗑️ Supprimer</button>
+			            	<button type="submit" name="bouton_suppression" class="btn btn-sm btn-danger" value="'.$chemin.'">🗑️ Supprimer</button>
 			            </form>
 			          </td>
 			        </tr>');
