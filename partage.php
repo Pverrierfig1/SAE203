@@ -35,7 +35,7 @@ navigation($page);
       </thead>
       <tbody>
       <?php
-      if (isset($_POST['bouton_suppression'])){suppression($_POST['bouton_suppression']);} // si le bouton "bouton_suppression" est pressé alors l'appelle de la fonctione suppression avec l'argument $chemin sera effectué
+
       $data = json_decode(file_get_contents("./data/utilisateurs.json"),true);
       $uploads = json_decode(file_get_contents("./data/uploads.json"),true);
 
@@ -56,9 +56,9 @@ navigation($page);
 							    <a href="'.$chemin.'" class="btn btn-sm btn-primary me-2" download>📥 Télécharger</a>
 							    
 							    <form action="./depot.php" method="POST">
-							      <input type="hidden" name="nomfichier" value="'.$fichier.'">
-							      <button type="submit" class="btn btn-sm btn-warning me-2 modifier mt-3">✏️ Modifier</button>
-							      <button type="submit" name="bouton_suppression" class="btn btn-sm me-2 btn-danger mt-3">🗑️ Supprimer</button>
+							    	<input type="hidden" name="username" value="'.$user.'">
+							      <button type="submit" name="modify" class="btn btn-sm btn-warning me-2 mt-3" value="'.$fichier.'">✏️ Modifier</button>
+							      <button type="submit" name="delete" class="btn btn-sm me-2 btn-danger mt-3" value="'.$fichier.'">🗑️ Supprimer</button>
 							    </form>
 							  </td>
 							  <td>'.$vals['commentaires'].'</td>
