@@ -162,6 +162,21 @@ navigation($page);
             </ul>
         </div>
     </div>
+    <div class="card shadow mb-4 border-primary">
+        <div class="card-body bg-light">
+            <h5 class="card-title text-primary"> Intranet</h5>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Accès</li>
+                <ul>
+                    <li>Pour accéder à l'intranet depuis le wordpress on peut sois: </li>
+                    <ul class="list-group list-group-flush">
+                        <li>utiliser le bouton sur le site vitrine</li>
+                        <li>utliser la redirection avec l'URL suivant : <em>/wordpress/intranet</em></li>
+                    </ul>
+                </ul>
+            </ul>
+        </div>
+    </div>
 </div>
 
 <?php
