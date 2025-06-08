@@ -43,6 +43,7 @@ elseif (isset($_POST['modify'])){
 elseif (isset($_POST["confirm_modif"])){
   $uploads[$_POST["username"]][$_POST["confirm_modif"]]["commentaires"] = $_POST["commentaires"];
   file_put_contents("./data/uploads.json", json_encode($uploads));
+  echo('<div class="container alert alert-success alert-dismissible text-center mt-4">Modification publiée !</div>');
 }
 
 elseif (isset($_POST['bouton_confirm'])){
