@@ -41,7 +41,7 @@ foreach ($liste_util as $identifiant => $user) {  // $identifiant = clé (ex: je
     $prenom = $user['prenom'];
     $role = implode(", ", $user['roles']); // Le rôles est un tableau, on le transforme en chaîne
     $bio = $user['bio']; 
-    $photo = pp_search($nom,$prenom);
+    $photo = pp_search($prenom,$nom);
     if (!file_exists($photo)){
         $photo = "./images/default.jpg";
     }

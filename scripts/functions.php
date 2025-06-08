@@ -15,12 +15,13 @@ function parametres($titre,$description,$keywords){
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="icon" href="./images/logo.png">
+  <script src="./scripts/JavaScript.js" defer></script>
 </head>
 <body>');
 }
 
 function entete($titre){
-  echo("<script src='./scripts/JavaScript.js' async></script>
+  echo("
     <header class='p-3 bg-primary text-white'>
     <div class='container-fuild'>
       <div class='row'>
@@ -75,41 +76,30 @@ function navigation($page){
           <a class='nav-link " . ($page == 'Acceuil' ? 'active' : '') . "' href='./accueil.php'>Accueil</a>
         </li>");
         if (isset($_SESSION["username"])){
-        echo("<li class='nav-item dropdown'>
-          <a class='nav-link " . ($page == 'Page de partage' ? 'active' : '') . " dropdown-toggle' href='#' role='button' data-bs-toggle='dropdown'>Gestionnaire de fichiers</a>
-          <ul class='dropdown-menu'>
-            <li><a class='dropdown-item' href='./partage.php'>Visualisation</a></li>
-            <li><a class='dropdown-item' href='./depot.php'>Modification</a></li>
-          </ul>
-        </li>");
+          echo("<li class='nav-item dropdown'>
+            <a class='nav-link " . ($page == 'Page de partage' ? 'active' : '') . " dropdown-toggle' href='#' role='button' data-bs-toggle='dropdown'>Gestionnaire de fichiers</a>
+            <ul class='dropdown-menu'>
+              <li><a class='dropdown-item' href='./partage.php'>Visualisation</a></li>
+              <li><a class='dropdown-item' href='./depot.php'>Modification</a></li>
+            </ul>
+          </li>");
+          echo("<li class='nav-item'>
+            <a class='nav-link " . ($page == "Annuaire de l'entreprise" ? 'active' : '') . "' href='./annuaire_entreprise.php'>Annuaire entreprise</a>
+          </li>");
+          echo("<li class='nav-item'>
+            <a class='nav-link " . ($page == 'Annuaire des fournisseur' ? 'active' : '') . "' href='./annuaire_fournisseurs.php'>Annuaires des fournisseurs</a>
+          </li>");
+          echo("<li class='nav-item'>
+              <a class='nav-link " . ($page == 'Annuaire des clients' ? 'active' : '') . "' href='./annuaire_client.php'>Annuaire des clients</a>
+          </li>");
+          echo("<li class='nav-item'>
+            <a class='nav-link " . ($page == 'Gestion des fournisseurs' ? 'active' : '') . "' href='./gestion_fournisseur.php'>Gestion des fournisseurs</a>
+          </li>");
         };
-        if (isset($_SESSION["username"])){
-        echo("<li class='nav-item'>
-          <a class='nav-link " . ($page == "Annuaire de l'entreprise" ? 'active' : '') . "' href='./annuaire_entreprise.php'>Annuaire entreprise</a>
-        </li>");
-        };
-        if (isset($_SESSION["username"])){
-        echo("<li class='nav-item'>
-          <a class='nav-link " . ($page == 'Annuaire des fournisseur' ? 'active' : '') . "' href='./annuaire_fournisseurs.php'>Annuaires des fournisseurs</a>
-        </li>");
-        };
-        if (isset($_SESSION["username"])) {echo("<li class='nav-item'>
-            <a class='nav-link " . ($page == 'Annuaire des clients' ? 'active' : '') . "' href='./annuaire_client.php'>Annuaire des clients</a>
-        </li>");
-        };
-        if (isset($_SESSION["username"])){
-        echo("<li class='nav-item'>
-          <a class='nav-link " . ($page == 'Gestion des fournisseurs' ? 'active' : '') . "' href='./gestion_fournisseur.php'>Gestion des fournisseurs</a>
-        </li>");
-        };
-        if (isset($_SESSION["username"])){
+        if (isset($_SESSION["username"]) && in_array("Administrateur", $_SESSION['roles'])){
         echo("<li class='nav-item'>
           <a class='nav-link " . ($page == 'Gestion des utilisateurs' ? 'active' : '') . "' href='./gestion.php'>Gestion</a>
         </li>");
-        };
-        if (isset($_SESSION['roles']) && array_search("administrateur", $_SESSION['roles'])){echo("<li class='nav-item'>
-            <a class='nav-link " . ($page == 'Gestion' ? 'active' : '') . "' href='./gestion.php'>Gestion</a>
-          </li>");
         };
         echo("<li class='nav-item'>
             <a class='nav-link " . ($page == 'Wiki' ? 'active' : '') . "' href='./wiki.php'>Wiki</a>

@@ -12,7 +12,6 @@ entete($page);
 navigation($page);
 
 ?>
-<script src="./scripts/JavaScript.js" async></script> <!--A mettre dans le header pour cette page--> 
 
 <div class="container mt-4">
   <h1 class="mb-4">📁 Espace de partage</h1>
@@ -26,38 +25,47 @@ navigation($page);
       <thead class="table-info">
         <tr>
           <th>Nom du fichier</th>
+          <th>Propriétaire</th>
           <th>Taille</th>
           <th>Date de dépôt</th>
+          <th>Partagé avec</th>
           <th>Actions</th>
+          <th>Commentaires</th>
         </tr>
       </thead>
       <tbody>
       <?php
       if (isset($_POST['bouton_suppression'])){suppression($_POST['bouton_suppression']);} // si le bouton "bouton_suppression" est pressé alors l'appelle de la fonctione suppression avec l'argument $chemin sera effectué
+      $data = json_decode(file_get_contents("./data/utilisateurs.json"),true);
+      $uploads = json_decode(file_get_contents("./data/uploads.json"),true);
 
-      foreach (scandir("./data/users") as $dossier) {
-				if ($dossier != "." && $dossier != "..") { //il faut retirer les . et .. car scandir les met dans la table
-      		foreach(scandir("./data/users/".$dossier) as $fichier){
-      			if ($fichier != "." && $fichier != "..") {
-      				$chemin = "./data/users/".$dossier."/".$fichier;
-      				$taille = filesize($chemin);
-      				echo('
-			      	<tr>
-			          <td>'.$fichier.'</td>
-			          <td>'.round($taille/1024/1024, 2).' Mo</td>
-			          <td>'.date ("d/m/Y H:i", filemtime($chemin)).'</td>
-			          <td>
-			            <button class="btn btn-sm btn-outline-secondary voir" data-bs-toggle="modal" data-bs-target="#visualiseur" data-file="'.$chemin.'">👁️ Consulter</button>
-			            <a href="'.$chemin.'" class="btn btn-sm btn-primary" download>📥 Télécharger</a>
-			            <form action="./depot.php" method="POST">
-			            	<input type="hidden" name="nomfichier" value="'.$fichier.'">
-			            	<button type="submit" name="bouton_suppression" class="btn btn-sm btn-danger suppression" value="'.$chemin.'">🗑️ Supprimer</button>
-			            </form>
-			          </td>
-			        </tr>');
-      			}// l'attribute data-bs-target est pour boostrap afin qu'il affiche en model la frame avec l'id de l'attribute. L'attribute data-file est pour le js afin qu'il affiche dans l'iframe le doc.
+      foreach($uploads as $user=>$fichiers) {
+      	foreach($fichiers as $fichier=>$vals){
+      		if (array_intersect($_SESSION["roles"], $vals["roles"])){
+      			$chemin = "./data/users/".$user."/".$fichier;
+							echo('
+							<tr>
+							  <td>'.$fichier.'</td>
+							  <td>'.$data[$user]["nom"].' '.$data[$user]["prenom"].'</td>
+							  <td>'.round(filesize($chemin)/1024/1024, 2).' Mo</td>
+							  <td>'.date ("d/m/Y H:i", filemtime($chemin)).'</td>
+							  <td>'.implode(', ', $vals["roles"]).'</td>
+							  <td>
+							    <button class="btn btn-sm btn-outline-secondary me-2 voir" data-bs-toggle="modal" data-bs-target="#visualiseur" data-file="'.$chemin.'">👁️ Consulter</button>
+							    
+							    <a href="'.$chemin.'" class="btn btn-sm btn-primary me-2" download>📥 Télécharger</a>
+							    
+							    <form action="./depot.php" method="POST">
+							      <input type="hidden" name="nomfichier" value="'.$fichier.'">
+							      <button type="submit" class="btn btn-sm btn-warning me-2 modifier mt-3">✏️ Modifier</button>
+							      <button type="submit" name="bouton_suppression" class="btn btn-sm me-2 btn-danger mt-3">🗑️ Supprimer</button>
+							    </form>
+							  </td>
+							  <td>'.$vals['commentaires'].'</td>
+							</tr>
+							');// l'attribute data-bs-target est pour boostrap afin qu'il affiche en model la frame avec l'id de l'attribute. L'attribute data-file est pour le js afin qu'il affiche dans l'iframe le doc.
       		}
-      	}
+      	} // implode retire les characteres donnée
       }
 
       ?>

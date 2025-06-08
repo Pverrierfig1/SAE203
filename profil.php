@@ -34,7 +34,7 @@ if (isset($_FILES["fichier"]) && $_FILES["fichier"]["error"] === UPLOAD_ERR_OK) 
     if (file_exists($img)){
       unlink($img);
     }
-    move_uploaded_file($_FILES["fichier"]["tmp_name"],"./images/images_utilisateur/".$nom.'_'.$prenom.".".$extention);
+    move_uploaded_file($_FILES["fichier"]["tmp_name"],"./images/images_utilisateur/".strtolower($prenom.'_'.$nom).".".$extention);
     echo('
         <div class="alert alert-success mt-5 container">
           <strong>Photo de profil changé !</strong>

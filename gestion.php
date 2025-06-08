@@ -165,6 +165,11 @@ elseif(isset($_POST["suppression"])){ // On supprime les donnnées de l'utilisat
 	if (file_exists($photo)){
 		unlink($photo);
 	}
+  $uploads = json_decode(file_get_contents("./data/uploads.json"),true);
+  if ($uploads[$_POST["suppression"]]){
+    unset($uploads[$_POST["suppression"]]);
+    file_put_contents("./data/uploads.json", json_encode($uploads));
+  }
 	echo('
     <div class="alert alert-success mt-5 container">
           <p>L\'utilisateur <strong>'.$prenom.' '.$nom.'</strong> à été supprimé</p>
