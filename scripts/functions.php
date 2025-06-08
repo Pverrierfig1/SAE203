@@ -102,7 +102,7 @@ function navigation($page){
         </li>");
         };
         echo("<li class='nav-item'>
-            <a class='nav-link " . ($page == 'Page Wiki' ? 'active' : '') . "' href='./wiki.php'>Wiki</a>
+            <a class='nav-link " . ($page == 'Wiki' ? 'active' : '') . "' href='./wiki.php'>Wiki</a>
           </li>");
         echo("
       </ul>
