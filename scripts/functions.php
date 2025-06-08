@@ -75,35 +75,27 @@ function navigation($page){
           <a class='nav-link " . ($page == 'Acceuil' ? 'active' : '') . "' href='./accueil.php'>Accueil</a>
         </li>");
         if (isset($_SESSION["username"])){
-        echo("<li class='nav-item dropdown'>
-          <a class='nav-link " . ($page == 'Page de partage' ? 'active' : '') . " dropdown-toggle' href='#' role='button' data-bs-toggle='dropdown'>Gestionnaire de fichiers</a>
-          <ul class='dropdown-menu'>
-            <li><a class='dropdown-item' href='./partage.php'>Visualisation</a></li>
-            <li><a class='dropdown-item' href='./depot.php'>Modification</a></li>
-          </ul>
-        </li>");
-        };
-        if (isset($_SESSION["username"])){
-        echo("<li class='nav-item'>
-          <a class='nav-link " . ($page == "Annuaire de l'entreprise" ? 'active' : '') . "' href='./annuaire_entreprise.php'>Annuaire entreprise</a>
-        </li>");
-        };
-        if (isset($_SESSION["username"])){
-        echo("<li class='nav-item'>
-          <a class='nav-link " . ($page == 'Annuaire des fournisseur' ? 'active' : '') . "' href='./annuaire_fournisseurs.php'>Annuaires des fournisseurs</a>
-        </li>");
-        };
-        if (isset($_SESSION["username"])) {
+          echo("<li class='nav-item dropdown'>
+            <a class='nav-link " . ($page == 'Page de partage' ? 'active' : '') . " dropdown-toggle' href='#' role='button' data-bs-toggle='dropdown'>Gestionnaire de fichiers</a>
+            <ul class='dropdown-menu'>
+              <li><a class='dropdown-item' href='./partage.php'>Visualisation</a></li>
+              <li><a class='dropdown-item' href='./depot.php'>Modification</a></li>
+            </ul>
+          </li>");
           echo("<li class='nav-item'>
-            <a class='nav-link " . ($page == 'Annuaire des clients' ? 'active' : '') . "' href='./annuaire_client.php'>Annuaire des clients</a>
-        </li>");
+            <a class='nav-link " . ($page == "Annuaire de l'entreprise" ? 'active' : '') . "' href='./annuaire_entreprise.php'>Annuaire entreprise</a>
+          </li>");
+          echo("<li class='nav-item'>
+            <a class='nav-link " . ($page == 'Annuaire des fournisseur' ? 'active' : '') . "' href='./annuaire_fournisseurs.php'>Annuaires des fournisseurs</a>
+          </li>");
+          echo("<li class='nav-item'>
+              <a class='nav-link " . ($page == 'Annuaire des clients' ? 'active' : '') . "' href='./annuaire_client.php'>Annuaire des clients</a>
+          </li>");
+          echo("<li class='nav-item'>
+            <a class='nav-link " . ($page == 'Gestion des fournisseurs' ? 'active' : '') . "' href='./gestion_fournisseur.php'>Gestion des fournisseurs</a>
+          </li>");
         };
-        if (isset($_SESSION["username"])){
-        echo("<li class='nav-item'>
-          <a class='nav-link " . ($page == 'Gestion des fournisseurs' ? 'active' : '') . "' href='./gestion_fournisseur.php'>Gestion des fournisseurs</a>
-        </li>");
-        };
-        if (isset($_SESSION["username"]) && in_array("administrateur", $_SESSION['roles'])){
+        if (isset($_SESSION["username"]) && in_array("Administrateur", $_SESSION['roles'])){
         echo("<li class='nav-item'>
           <a class='nav-link " . ($page == 'Gestion des utilisateurs' ? 'active' : '') . "' href='./gestion.php'>Gestion</a>
         </li>");
