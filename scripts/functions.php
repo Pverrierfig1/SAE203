@@ -177,8 +177,4 @@ function pp_search($prenom, $nom){
   return;
 }
 
-function suppression($file){
-  unlink($file);
-}
-
 ?>
