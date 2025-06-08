@@ -13,9 +13,9 @@ entete($page);
 
 navigation($page);
 
-if (isset($_POST['delete'])){
+if (isset($_POST['delete'])){ //basename permet d'avoir seulement le nom du fichier avec un chemin
   echo('<div class="container alert alert-danger mt-4 text-center">
-    <strong>Suppression</strong> Souhaitez-vous suppimer ce fichier : '.$_POST['delete'].' . Veuillez-confirmez la suppression.
+    <strong>Suppression</strong> Souhaitez-vous suppimer ce fichier : '.basename($_POST['delete']).' . Veuillez-confirmez la suppression.
     </div>
     <div class="container text-center">
     <form action="#" method="POST">
@@ -33,7 +33,7 @@ elseif (isset($_POST['modify'])){
     <h2 class="mt-3">Modifier un fichier</h2>
     <form action="#" method="POST">
       <label for="comment" class="mt-4">Commentaires :</label>
-      <textarea class="form-control" id="comment" name="commentaires"></textarea>
+      <textarea class="form-control" id="comment" name="commentaires">'.htmlspecialchars($uploads[$_POST["username"]][$_POST["modify"]]["commentaires"]).'</textarea>
       <input type="hidden" name="username" value="'.$_POST["username"].'">
       <button type="submit" name="confirm_modif" class="btn btn-success mt-3" value="'.$_POST['modify'].'">Envoyer</button>
     </form>
@@ -41,12 +41,12 @@ elseif (isset($_POST['modify'])){
 }
 
 elseif (isset($_POST["confirm_modif"])){
-  $uploads[$_POST["username"]][$_POST["confirm_modif"]]["commenaires"] = $_POST["commentaires"];
+  $uploads[$_POST["username"]][$_POST["confirm_modif"]]["commentaires"] = $_POST["commentaires"];
   file_put_contents("./data/uploads.json", json_encode($uploads));
 }
 
 elseif (isset($_POST['bouton_confirm'])){
-  unset($uploads[$_POST["username"]][$_POST["bouton_confirm"]]);
+  unset($uploads[$_POST["username"]][basename($_POST["bouton_confirm"])]);
   unlink($_POST['bouton_confirm']);
   file_put_contents("./data/uploads.json", json_encode($uploads));
   echo('<div class="container alert alert-success alert-dismissible text-center mt-4">Suppression confirmé</div>');
@@ -68,6 +68,7 @@ elseif (isset($_FILES["fichier"]) && $_FILES["fichier"]["error"] === UPLOAD_ERR_
   }
   $uploads[$username][$_FILES["fichier"]["name"]] = array("roles"=>$allowed,"commentaires"=>$_POST["commentaires"]);
   file_put_contents("./data/uploads.json", json_encode($uploads));
+  echo('<div class="container alert alert-success alert-dismissible text-center mt-4">Fichier publié !</div>');
 }
 else{
   echo('
