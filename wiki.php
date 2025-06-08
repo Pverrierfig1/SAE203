@@ -131,7 +131,7 @@ navigation($page);
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">Fonctionnalitées : </li>
                 <ul>
-                    <li><code>Modification</code> : permet de consulter et modifier sa photo de profil (.png, .jpg, .jpeg), sa bio et son nom</li>
+                    <li><code>Modification</code> : permet de consulter et modifier sa photo de profil (.png, .jpg, .jpeg), sa bio</li>
                 </ul>
             </ul>
         </div>
