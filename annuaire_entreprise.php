@@ -7,6 +7,10 @@ parametres($page, $description, $keywords);
 entete($page);
 navigation($page);
 
+if (!isset($_SESSION['username']) or !in_array("Administrateur", $_SESSION['roles']) or !in_array("Manager", $_SESSION['roles']) or !in_array("Direction", $_SESSION['roles'])){
+  header('Location: ./accueil.php');        // vérification si l'utilisateurs peut accéder a la page, si non il est rediriger sur l'accueil
+}
+
 $login = $_SESSION['username'] ?? null;
 
 $liste_util = json_decode(file_get_contents("data/utilisateurs.json"), true);

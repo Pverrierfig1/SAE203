@@ -7,6 +7,10 @@ parametres($page, $description, $keywords);
 entete($page);
 navigation($page);
 
+if (!isset($_SESSION['username']) or !in_array("Administrateur", $_SESSION['roles']) or !in_array("Manager", $_SESSION['roles']) or !in_array("Direction", $_SESSION['roles'])){
+  header('Location: ./accueil.php');        // vérification si l'utilisateurs peut accéder a la page, si non il est rediriger sur l'accueil
+}
+
 // Vérifie si un utilisateur est connecté et récupère son login
 $login = $_SESSION['username'] ?? null;
 

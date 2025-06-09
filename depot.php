@@ -13,6 +13,10 @@ entete($page);
 
 navigation($page);
 
+if (!isset($_SESSION['username'])){
+  header('Location: ./accueil.php');    // vérification si l'utilisateurs peut accéder a la page, si non il est rediriger sur l'accueil
+}
+
 if (isset($_POST['delete'])){ //basename permet d'avoir seulement le nom du fichier avec un chemin
   echo('<div class="container alert alert-danger mt-4 text-center">
     <strong>Suppression</strong> Souhaitez-vous suppimer ce fichier : '.basename($_POST['delete']).' . Veuillez-confirmez la suppression.

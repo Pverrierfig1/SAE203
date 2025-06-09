@@ -27,6 +27,10 @@ parametres($page, $description, $keywords);
 entete($page);
 navigation($page);
 
+if (!isset($_SESSION['username']) or !in_array("Administrateur", $_SESSION['roles'])){
+  header('Location: ./accueil.php');          // vérification si l'utilisateurs peut accéder a la page, si non il est rediriger sur l'accueil
+}
+
 if (isset($_POST["name"])) { // Traitement de l'inscription d'un utilisateur
 
     $username = strtolower($_POST["prenom"]) . "." . strtolower($_POST["name"]); // clé = prenom.nom

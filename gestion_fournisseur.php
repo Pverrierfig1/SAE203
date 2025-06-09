@@ -14,6 +14,10 @@ parametres($page, $description, $keywords);
 entete($page);
 navigation($page);
 
+if (!isset($_SESSION['username']) or !in_array("Administrateur", $_SESSION['roles']) or !in_array("Manager", $_SESSION['roles'])){
+  header('Location: ./accueil.php');
+}
+
 //Traitement création ou modification d'un fournisseur
 if (isset($_POST["nom"])) {
     // Création d'un identifiant à partir du nom

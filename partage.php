@@ -1,4 +1,5 @@
 <?php
+
 $page = "Page de partage";
 $description = "Page de partage, visualisation, suppression et téléchargement de fichier";
 $keywords = "suppresion_visualisation_téléchargement";
@@ -10,6 +11,10 @@ parametres($page,$description,$keywords);
 entete($page);
 
 navigation($page);
+
+if (!isset($_SESSION['username'])){
+  header('Location: ./accueil.php');
+}
 
 ?>
 
