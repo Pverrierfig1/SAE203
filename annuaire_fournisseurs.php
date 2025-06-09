@@ -26,14 +26,14 @@ $est_admin = in_array('Administrateur', $roles_connecte);
 $fournisseurs = json_decode(file_get_contents("data/fournisseurs.json"), true);
 
 echo "<div class='container ml-5 mr-5'>";
-echo "<h1 class='mt-5 mb-5'>🏢 Annuaire des fournisseurs partenaires</h1>";
+echo "<h1 class='mt-5 mb-4'>🏢 Annuaire des fournisseurs partenaires</h1>";
 
 // Formulaire POST envoyant les actions vers gestion_fournisseur.php
 echo "<form method='POST' action='gestion_fournisseur.php'>";
 
 // Si l'utilisateur est un administrateur, on affiche un bouton pour ajouter
 if ($est_admin) {
-    echo "<h2>Ajouter un nouveau fournisseur :</h2>";
+    echo "<h2 class='mb-3'>Ajouter un nouveau fournisseur :</h2>";
     echo "<button class='btn btn-success mb-3' type='submit' name='ajouter' value='ajouter'>Ajouter un fournisseur</button>";
 }
 

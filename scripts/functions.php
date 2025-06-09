@@ -82,7 +82,7 @@ function navigation($page){
             <a class='nav-link ".($page == 'Page de partage' ? 'active' : '')." dropdown-toggle' href='#' role='button' data-bs-toggle='dropdown'>Gestionnaire de fichiers</a>
             <ul class='dropdown-menu'>
               <li><a class='dropdown-item' href='./partage.php'>Visualisation</a></li>
-              <li><a class='dropdown-item' href='./depot.php'>Modification</a></li>
+              <li><a class='dropdown-item' href='./depot.php'>Upload de fichiers</a></li>
             </ul>
           </li>
           <li class='nav-item'>
