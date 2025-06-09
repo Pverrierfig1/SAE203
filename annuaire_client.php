@@ -44,9 +44,6 @@ entete($page);
 navigation($page);
 ?>
 
-<!-- JavaScript spécifique à cette page -->
-<script src="./scripts/JavaScript.js" async></script>
-
 <div class="container mt-4">
   <h1 class="mb-4">📖 Annuaire des clients</h1>
   <div class="alert alert-info">
@@ -54,6 +51,13 @@ navigation($page);
   </div>
 
 <?php
+
+
+echo('
+    <form class="d-flex mb-4" method="GET" action="#">
+        <input class="form-control me-2" type="text" placeholder="Rechercher un fournisseur" name="recherche">
+        <button class="btn btn-info" type="submit">Rechercher</button>
+    </form>');
 
 
 if (isset($_POST['save'])) {
@@ -93,7 +97,11 @@ if (isset($_POST['save'])) {
     </thead>
     <tbody>
     <?php foreach ($colonnes as $index => $ligne): if ($index === 0) continue; #ignore l'entête du csv
-          if (count($ligne) < 4) continue; ?> <!-- ignore les lignes incomplètes -->
+          if (count($ligne) < 4) continue;
+          if (isset($_GET["recherche"]) && $_GET["recherche"] != "" && !str_contains($ligne[0], $_GET["recherche"])){
+          continue; //str_contains uniquement dispo sur php 8 !
+          }
+           ?> <!-- ignore les lignes incomplètes -->
         <tr id="client-<?= $index ?>"> <!-- Création du tableau qui prends les informations du fichier csv -->
             <td>
             <a href="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>?download=<?= $index ?>" class="text-decoration-none">

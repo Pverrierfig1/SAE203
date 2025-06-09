@@ -28,6 +28,12 @@ $fournisseurs = json_decode(file_get_contents("data/fournisseurs.json"), true);
 echo "<div class='container ml-5 mr-5'>";
 echo "<h1 class='mt-5 mb-4'>🏢 Annuaire des fournisseurs partenaires</h1>";
 
+echo('
+    <form class="d-flex mb-4" method="GET" action="#">
+        <input class="form-control me-2" type="text" placeholder="Rechercher un fournisseur" name="recherche">
+        <button class="btn btn-info" type="submit">Rechercher</button>
+    </form>');
+
 // Formulaire POST envoyant les actions vers gestion_fournisseur.php
 echo "<form method='POST' action='gestion_fournisseur.php'>";
 
@@ -46,7 +52,9 @@ foreach ($fournisseurs as $id => $fournisseur) {
     $nom = htmlspecialchars($fournisseur['nom']);
     $description = htmlspecialchars($fournisseur['description']);
     $logo = "./images/logo/" . $fournisseur['logo'];
-
+    if (isset($_GET["recherche"]) && $_GET["recherche"] != "" && !str_contains($fournisseur["nom"], $_GET["recherche"])){
+        continue; //str_contains uniquement dispo sur php 8 !
+    }
     // Vérifie si le logo existe, sinon image par défaut
     if (!file_exists($logo)) {
         $logo = "./images/logo/default_logo.jpg";

@@ -39,7 +39,7 @@ echo "<tr><th>Photo</th><th>Nom</th><th>Prénom</th><th>Fonction</th><th>Bio</th
 // Parcours de chaque utilisateur
 foreach ($liste_util as $identifiant => $user) {
     if (isset($_GET["recherche"]) && $_GET["recherche"] != "" && !str_contains($user["nom"], $_GET["recherche"]) && !str_contains($user["prenom"], $_GET["recherche"])){
-        continue;
+        continue; //str_contains uniquement dispo sur php 8 !
     }
     $nom = $user['nom'];
     $prenom = $user['prenom'];
