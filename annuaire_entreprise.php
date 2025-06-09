@@ -25,6 +25,12 @@ if ($est_admin) {
     echo "</form>";
 }
 
+echo('
+    <form class="d-flex mb-4" method="GET" action="#">
+        <input class="form-control me-2" type="text" placeholder="Rechercher un utilisateur" name="recherche">
+        <button class="btn btn-info" type="submit">Rechercher</button>
+    </form>');
+
 // Formulaire pour modifier/supprimer des utilisateurs
 echo "<form method='POST' action='gestion.php'>";
 echo "<table class='table table-striped table-info'>";
@@ -32,6 +38,9 @@ echo "<tr><th>Photo</th><th>Nom</th><th>Prénom</th><th>Fonction</th><th>Bio</th
 
 // Parcours de chaque utilisateur
 foreach ($liste_util as $identifiant => $user) {
+    if (isset($_GET["recherche"]) && $_GET["recherche"] != "" && !str_contains($user["nom"], $_GET["recherche"]) && !str_contains($user["prenom"], $_GET["recherche"])){
+        continue;
+    }
     $nom = $user['nom'];
     $prenom = $user['prenom'];
     $role = implode(", ", $user['roles'] ?? []);
