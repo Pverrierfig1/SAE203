@@ -84,7 +84,9 @@ function navigation($page){
               <li><a class='dropdown-item' href='./partage.php'>Visualisation</a></li>
               <li><a class='dropdown-item' href='./depot.php'>Upload de fichiers</a></li>
             </ul>
-          </li>
+          </li>");
+  if (isset($_SESSION['username']) && (in_array("Administrateur", $_SESSION['roles']) or in_array("Manager", $_SESSION['roles']) or in_array("Direction", $_SESSION['roles']))){
+    echo("
           <li class='nav-item'>
             <a class='nav-link ".($page == "Annuaire de l'entreprise" ? 'active' : '')."' href='./annuaire_entreprise.php'>Annuaire entreprise</a>
           </li>
@@ -93,7 +95,10 @@ function navigation($page){
           </li>
           <li class='nav-item'>
             <a class='nav-link ".($page == 'Annuaire des clients' ? 'active' : '')."' href='./annuaire_client.php'>Annuaire des clients</a>
-          </li>
+          </li>");
+  }
+  if (isset($_SESSION['username']) && (in_array("Administrateur", $_SESSION['roles']) or in_array("Manager", $_SESSION['roles']))){
+    echo("
           <li class='nav-item'>
             <a class='nav-link ".($page == 'Gestion des fournisseurs' ? 'active' : '')."' href='./gestion_fournisseur.php'>Gestion des fournisseurs</a>
           </li>");
