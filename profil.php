@@ -16,7 +16,9 @@ entete($page);
 navigation($page);
 
 if (isset($_SESSION['username'])){
-  
+  header('Location: ./accueil.php');
+  exit;
+}
 
 $user = $_SESSION["username"];
 $nom = $_SESSION["nom"];
@@ -66,8 +68,6 @@ if (isset($_FILES["fichier"]) && $_FILES["fichier"]["error"] === UPLOAD_ERR_OK) 
 </div>
 
 <?php 
-}
-header('Location: ./accueil.php');
 
 pieddepage();
 ?>

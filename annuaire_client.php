@@ -9,8 +9,10 @@ parametres($page, $description, $keywords);
 entete($page);
 navigation($page);
 
-if (isset($_SESSION['username']) and (in_array("Administrateur", $_SESSION['roles']) or in_array("Manager", $_SESSION['roles']) or in_array("Direction", $_SESSION['roles']))){
-          // vérification si l'utilisateurs peut accéder a la page, si non il est rediriger sur l'accueil
+if (!(isset($_SESSION['username']) && (in_array("Administrateur", $_SESSION['roles']) || in_array("Manager", $_SESSION['roles']) || in_array("Direction", $_SESSION['roles'])))){
+  header('Location: ./accueil.php');
+  exit;
+}
     $colonnes = [];
     if (($fichier = fopen('./data/client.csv', 'r')) !== false) {
         while (($contenu = fgetcsv($fichier, 1000, ';')) !== false) {
@@ -178,6 +180,4 @@ if (isset($_SESSION['username']) and (in_array("Administrateur", $_SESSION['role
     </div>
 
 <?php 
-}
-header('Location: ./accueil.php');
 pieddepage(); ?>

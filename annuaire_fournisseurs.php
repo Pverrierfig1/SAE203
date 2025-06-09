@@ -7,9 +7,12 @@ parametres($page, $description, $keywords);
 entete($page);
 navigation($page);
 
-if (isset($_SESSION['username']) and (in_array("Administrateur", $_SESSION['roles']) or in_array("Manager", $_SESSION['roles']) or in_array("Direction", $_SESSION['roles']))){
+if (!(isset($_SESSION['username']) && (in_array("Administrateur", $_SESSION['roles']) || in_array("Manager", $_SESSION['roles']) || in_array("Direction", $_SESSION['roles'])))){
           // vérification si l'utilisateurs peut accéder a la page, si oui alors la page s'affiche, si non il est rediriger vers accueil
-    
+    header('Location: ./accueil.php');
+    exit;
+
+}
     // Vérifie si un utilisateur est connecté et récupère son login
     $login = $_SESSION['username'] ?? null;
 
@@ -84,9 +87,6 @@ if (isset($_SESSION['username']) and (in_array("Administrateur", $_SESSION['role
     echo "</tbody></table>";
     echo "</form>";
     echo "</div>";
-}
-
-header('Location: ./accueil.php');
 
 pieddepage();
 ?>

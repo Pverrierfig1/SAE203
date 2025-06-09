@@ -13,9 +13,10 @@ entete($page);
 
 navigation($page);
 
-if (isset($_SESSION['username'])){
-      // vérification si l'utilisateurs peut accéder a la page, si oui alors la page s'affiche, si non il est rediriger vers accueil
-
+if (!isset($_SESSION['username'])){
+  header('Location: ./accueil.php');
+  exit;
+}
 
   if (isset($_POST['delete'])){ //basename permet d'avoir seulement le nom du fichier avec un chemin
     echo('<div class="container alert alert-danger mt-4 text-center">
@@ -107,8 +108,6 @@ if (isset($_SESSION['username'])){
     </form>
   </div>';
   }
-}
-header('Location: ./accueil.php');
 
 pieddepage();
 ?>

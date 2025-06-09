@@ -27,9 +27,11 @@ parametres($page, $description, $keywords);
 entete($page);
 navigation($page);
 
-if (isset($_SESSION['username']) and in_array("Administrateur", $_SESSION['roles'])){
+if (!(isset($_SESSION['username']) && in_array("Administrateur", $_SESSION['roles']))){
             // vérification si l'utilisateurs peut accéder a la page, si non il est rediriger sur l'accueil
-
+  header('Location: ./accueil.php');
+  exit;
+}
 
     if (isset($_POST["name"])) { // Traitement de l'inscription d'un utilisateur
 
@@ -244,8 +246,6 @@ if (isset($_SESSION['username']) and in_array("Administrateur", $_SESSION['roles
                 Suivez les statistiques, effectuez des mises à jour et assurez le bon fonctionnement de la plateforme en toute simplicité.</p>
         </div>';
     }
-}
-header('Location: ./accueil.php');
 
 pieddepage();
 ?>

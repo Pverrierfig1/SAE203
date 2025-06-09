@@ -14,8 +14,11 @@ parametres($page, $description, $keywords);
 entete($page);
 navigation($page);
 
-if (isset($_SESSION['username']) and (in_array("Administrateur", $_SESSION['roles']) or in_array("Manager", $_SESSION['roles']))){
+if (!(isset($_SESSION['username']) && (in_array("Administrateur", $_SESSION['roles']) || in_array("Manager", $_SESSION['roles'])))){
     //Traitement création ou modification d'un fournisseur
+  header('Location: ./accueil.php');
+  exit;
+}
     if (isset($_POST["nom"])) {
         // Création d'un identifiant à partir du nom
         $new_id = strtolower(str_replace(" ", "_", $_POST["nom"]));
@@ -154,8 +157,6 @@ if (isset($_SESSION['username']) and (in_array("Administrateur", $_SESSION['role
                 </form>
             </div>';
     }
-}
-header('Location: ./accueil.php');
 
 pieddepage();
 ?>
