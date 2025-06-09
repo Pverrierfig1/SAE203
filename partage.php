@@ -12,9 +12,8 @@ entete($page);
 
 navigation($page);
 
-if (!isset($_SESSION['username'])){
-  header('Location: ./accueil.php');
-}
+if (isset($_SESSION['username'])){
+  
 
 ?>
 
@@ -103,7 +102,8 @@ if (!isset($_SESSION['username'])){
 </div>
 
 <?php
-
+}
+header('Location: ./accueil.php');
 
 pieddepage();
 ?>

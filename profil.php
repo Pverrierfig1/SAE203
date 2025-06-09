@@ -15,9 +15,8 @@ $liste_util = json_decode(file_get_contents("data/utilisateurs.json"),true);
 entete($page);
 navigation($page);
 
-if (!isset($_SESSION['username'])){
-  header('Location: ./accueil.php');
-}
+if (isset($_SESSION['username'])){
+  
 
 $user = $_SESSION["username"];
 $nom = $_SESSION["nom"];
@@ -66,5 +65,9 @@ if (isset($_FILES["fichier"]) && $_FILES["fichier"]["error"] === UPLOAD_ERR_OK) 
     </form>
 </div>
 
-<?php pieddepage();
+<?php 
+}
+header('Location: ./accueil.php');
+
+pieddepage();
 ?>
