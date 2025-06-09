@@ -58,7 +58,7 @@ navigation($page);
 							    <form action="./depot.php" method="POST">
 							    	<input type="hidden" name="username" value="'.$user.'">
 							      <button type="submit" name="modify" class="btn btn-sm btn-warning me-2 mt-3" value="'.$fichier.'">✏️ Modifier</button>
-							      <button type="submit" name="delete" class="btn btn-sm me-2 btn-danger mt-3" value="'.$fichier.'">🗑️ Supprimer</button>
+							      <button type="submit" name="delete" class="btn btn-sm me-2 btn-danger mt-3" value="'.$chemin.'">🗑️ Supprimer</button>
 							    </form>
 							  </td>
 							  <td>'.$vals['commentaires'].'</td>
