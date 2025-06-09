@@ -1,4 +1,5 @@
 <?php
+
 $page = "Page de partage";
 $description = "Page de partage, visualisation, suppression et téléchargement de fichier";
 $keywords = "suppresion_visualisation_téléchargement";
@@ -11,6 +12,10 @@ entete($page);
 
 navigation($page);
 
+if (!isset($_SESSION['username'])){
+  header('Location: ./accueil.php');
+  exit;
+}
 ?>
 
 <div class="container mt-4">
@@ -98,7 +103,6 @@ navigation($page);
 </div>
 
 <?php
-
 
 pieddepage();
 ?>
