@@ -85,6 +85,7 @@ function navigation($page){
               <li><a class='dropdown-item' href='./depot.php'>Upload de fichiers</a></li>
             </ul>
           </li>");
+  }
   if (isset($_SESSION['username']) && (in_array("Administrateur", $_SESSION['roles']) or in_array("Manager", $_SESSION['roles']) or in_array("Direction", $_SESSION['roles']))){
     echo("
           <li class='nav-item'>
